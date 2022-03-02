@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>https://ac-accelerator.github.io/2022/03/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-1/</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/repository/index.html</loc>
+    <loc>https://ac-accelerator.github.io/2022/03/02/hello-world/</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/links/index.html</loc>
+    <loc>https://ac-accelerator.github.io/tags/index.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>https://ac-accelerator.github.io/repository/index.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>https://ac-accelerator.github.io/links/index.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/books/index.html</loc>
+    <loc>https://ac-accelerator.github.io/categories/index.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/404.html</loc>
+    <loc>https://ac-accelerator.github.io/about/index.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/03/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://ac-accelerator.github.io/books/index.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/03/02/hello-world/</loc>
+    <loc>https://ac-accelerator.github.io/404.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -84,13 +84,27 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://ac-accelerator.github.io/</loc>
     <lastmod>2022-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
+  <url>
+    <loc>https://ac-accelerator.github.io/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 </urlset>
