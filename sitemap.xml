@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ac-accelerator.github.io/2022/03/02/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9BC-A%E7%BB%84%E9%A2%98%E8%A7%A3/</loc>
+    
+    <lastmod>2022-03-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/2022/03/02/%E7%AC%AC%E5%8D%81%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9BC-A%E7%BB%84%E9%A2%98%E8%A7%A3/</loc>
+    
+    <lastmod>2022-03-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/2022/03/02/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9BC-A%E7%BB%84%E9%A2%98%E8%A7%A3/</loc>
+    
+    <lastmod>2022-03-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ac-accelerator.github.io/2022/03/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-1/</loc>
     
     <lastmod>2022-03-02</lastmod>
@@ -47,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://ac-accelerator.github.io/categories/index.html</loc>
+    <loc>https://ac-accelerator.github.io/books/index.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -56,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://ac-accelerator.github.io/books/index.html</loc>
+    <loc>https://ac-accelerator.github.io/categories/index.html</loc>
     
     <lastmod>2022-03-02</lastmod>
     
@@ -89,10 +116,38 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://ac-accelerator.github.io/tags/C/</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
     <loc>https://ac-accelerator.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2022-03-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
