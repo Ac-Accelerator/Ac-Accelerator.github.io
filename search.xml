@@ -1,181 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>第十一届蓝桥杯省赛C++ A组题解</title>
-    <url>//post/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9BC-A%E7%BB%84%E9%A2%98%E8%A7%A3.html</url>
-    <content><![CDATA[<p>出于能力和精力问题，有一部分题目暂无题解，见谅</p>
-<h2 id="试题a-门牌制作"><a class="markdownIt-Anchor" href="#试题a-门牌制作"></a> 试题A 门牌制作</h2>
-<p>小蓝要为一条街的住户制作门牌号<br />
-这条街一共有 2020 位住户，门牌号从 1 到 2020 编号。小蓝制作门牌的方法是先制作 0 到 9 这几个数字字符，最后根据需要将字符粘贴到门牌上，例如门牌 1017 需要依次粘贴字符 1、0、1、7，即需要 1 个字符 0，2 个字符 1，1 个字符 7。<br />
-请问要制作所有的 1 到 2020 号门牌，总共需要多少个字符 2?</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-int sum &#x3D; 0;
-void find2(int a)
-&#123;
-    while (a !&#x3D; 0)
-    &#123;
-        if (a % 10 &#x3D;&#x3D; 2)
-            sum++;
-        a &#x2F;&#x3D; 10;
-    &#125;
-&#125;
-int main()
-&#123;
-    for (int i &#x3D; 0; i &lt;&#x3D; 2020; i++)
-        find2(i);
-    cout &lt;&lt; sum;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="试题b-既约分数"><a class="markdownIt-Anchor" href="#试题b-既约分数"></a> 试题B 既约分数</h2>
-<p>如果一个分数的分子和分母的最大公约数是1，这个分数称为既约分数。例如，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">3/4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord">/</span><span class="mord">4</span></span></span></span> ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">5/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">/</span><span class="mord">2</span></span></span></span> ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1/8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">8</span></span></span></span>  ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn><mi mathvariant="normal">/</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">7/1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord">/</span><span class="mord">1</span></span></span></span> 都是既约分数。请问，有多少个既约分数，分子和分母都是1 到2020 之间的整数（包括1和2020）？</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-int GreatestCommonDivisor(int a, int b)
-&#123;
-    if (a &#x3D;&#x3D; 0 || b &#x3D;&#x3D; 0)
-        return 1;
-    int tmp;
-    while (a % b !&#x3D; 0)
-    &#123;
-        tmp &#x3D; a;
-        a &#x3D; b;
-        b &#x3D; tmp % b;
-    &#125;
-    return b;
-&#125;
-int main()
-&#123;
-    int sum &#x3D; 0;
-    for (int i &#x3D; 1; i &lt; 2021; i++)
-        for (int j &#x3D; 1; j &lt; 2021; j++)
-            if (GreatestCommonDivisor(i, j) &#x3D;&#x3D; 1)
-                sum++;
-    cout &lt;&lt; sum;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="试题c-蛇形填数"><a class="markdownIt-Anchor" href="#试题c-蛇形填数"></a> 试题C 蛇形填数</h2>
-<p>如下图所示，小明用从 1 开始的正整数“蛇形”填充无限大的矩阵。<br />
-1 2 6 7 15 …<br />
-3 5 8 14 …<br />
-4 9 13 …<br />
-10 12 …<br />
-11 …<br />
-…<br />
-求20行第20列的数字<br />
-观察规律可得第i行第i列公式为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><msup><mi>i</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2i^2-2i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span><br />
-求出答案为761</p>
-<h2 id="试题d-七段码"><a class="markdownIt-Anchor" href="#试题d-七段码"></a> 试题D 七段码</h2>
-<p>有127中情况，用用二进制可以表示哪个灯亮了哪个灯没亮；<br />
-建图，然后就深度优先遍历看看亮的灯是否联通</p>
-<h2 id="试题f-平面分割"><a class="markdownIt-Anchor" href="#试题f-平面分割"></a> 试题F 平面分割</h2>
-<p>20 个圆和20 条直线最多能把平面分成多少个部分？</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
-using namespace std;
-int main()
-&#123;
-    int n&#x3D;20;
-    int m&#x3D;20;
-    int ans&#x3D;1+(n*(n+1))&#x2F;2+(m*(2*n+2*n+2*(m-1)))&#x2F;2;
-    cout&lt;&lt;ans&lt;&lt;endl;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="试题f-成绩分析"><a class="markdownIt-Anchor" href="#试题f-成绩分析"></a> 试题F 成绩分析</h2>
-<p>小蓝给学生们组织了一场考试，卷面总分为100分，每个学生的得分都是一个0到100的整数。请计算这次考试的最高分、最低分和平均分</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-int main()
-&#123;
-    int n;
-    cin &gt;&gt; n;
-    int list[n];
-    double sum &#x3D; 0;
-    for (int i &#x3D; 0; i &lt; n;i++)
-    &#123;
-        cin &gt;&gt; list[i];
-        sum +&#x3D; list[i];
-    &#125;
-    sort(list, list + n);
-    cout &lt;&lt; list[n - 1] &lt;&lt; endl
-         &lt;&lt; list[0] &lt;&lt; endl
-         &lt;&lt; sum &#x2F; n;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="试题g-回文日期"><a class="markdownIt-Anchor" href="#试题g-回文日期"></a> 试题G 回文日期</h2>
-<p>2020 年春节期间，有一个特殊的日期引起了大家的注意：2020 年 2 月 2日。因为如果将这个日期按 “yyyymmdd” 的格式写成一个 8 位数是 20200202，恰好是一个回文数。我们称这样的日期是回文日期。有人表示 20200202 是 “千年一遇” 的特殊日子。对此小明很不认同，因为不到 2 年之后就是下一个回文日期：20211202 即 2021 年 12 月 2 日。也有人表示 20200202 并不仅仅是一个回文日期，还是一个 ABABBABA型的回文日期。对此小明也不认同，因为大约 100 年后就能遇到下一个ABABBABA 型的回文日期：21211212 即 2121 年 12 月 12 日。算不上 “千年一遇”，顶多算 “千年两遇”。给定一个 8 位数的日期，请你计算该日期之后下一个回文日期和下一个ABABBABA 型的回文日期各是哪一天。</p>
-<p>解：一共约366种回文日期，用sort排序然后与输入对比，找到之后就输出。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-string turn(int a)&#x2F;&#x2F;转化为标准格式输出
-&#123;
-    string ans;
-    for (int i &#x3D; 0; i &lt; 8;i++)
-    &#123;
-        ans &#x3D; char(a % 10 + &#39;0&#39;) + ans;
-        a &#x2F;&#x3D; 10;
-    &#125;
-    return ans;
-&#125;
-int rev(int a)&#x2F;&#x2F;对 （月&#x2F;日） 进行回文获得年份
-&#123;
-    int ans &#x3D; 0;
-    for (int i &#x3D; 0; i &lt; 4;i++)
-    &#123;
-        ans &#x3D; ans * 10 + a % 10;
-        a &#x2F;&#x3D; 10;
-    &#125;
-    return ans;
-&#125;
-int main()
-&#123;
-    int lists[370], p &#x3D; 0;&#x2F;&#x2F;所有回文
-    int abab[14], l &#x3D; 0;&#x2F;&#x2F;abab形回文
-    int month[] &#x3D; &#123;0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;&#x2F;&#x2F;十二个月
-    for (int i &#x3D; 1; i &lt;&#x3D; 12; i++)
-    &#123;
-        for (int j &#x3D; 1; j &lt;&#x3D; month[i]; j++)
-        &#123;
-            int k &#x3D; i * 100 + j;
-            k &#x3D; rev(k) * 10000 + k;
-            lists[p++] &#x3D; k;
-            if (i &#x3D;&#x3D; j &amp;&amp; i &#x2F; 10 !&#x3D; i % 10)&#x2F;&#x2F;判断abab形回文
-            &#123;
-                abab[l++] &#x3D; k;
-            &#125;
-        &#125;
-    &#125;
-    lists[p++] &#x3D; 92200229;&#x2F;&#x2F;闰年
-    sort(lists, lists + p);
-    sort(abab, abab + l);
-    int stds;
-    cin &gt;&gt; stds;
-    for (int i &#x3D; 0; i &lt; p; i++)
-    &#123;
-        if (lists[i] &gt; stds)
-        &#123;
-            cout &lt;&lt; turn(lists[i]);
-            break;
-        &#125;   
-    &#125;
-    cout &lt;&lt; endl;
-    for (int i &#x3D; 0; i &lt; l; i++)
-    &#123;
-        if (abab[i] &gt; stds)
-        &#123;
-            cout &lt;&lt; turn(abab[i]);
-            break;
-        &#125;   
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-      <categories>
-        <category>竞赛</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>字符串匹配算法</title>
     <url>//post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95.html</url>
     <content><![CDATA[<h2 id="1暴力匹配"><a class="markdownIt-Anchor" href="#1暴力匹配"></a> 1.暴力匹配：</h2>
@@ -249,10 +74,27 @@ int Sunday(string &amp;origin, int &amp;ol, string &amp;target, int &amp;tl)
         <category>竞赛</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>算法</tag>
+        <tag>C++</tag>
         <tag>字符串</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>我的第一篇博客</title>
+    <url>//post/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-1.html</url>
+    <content><![CDATA[<h2 id="博客的开始"><a class="markdownIt-Anchor" href="#博客的开始"></a> 博客的开始</h2>
+<p>经过了一天的<s>努力</s>，我参照了很多帖子，终于在github平台上搭建起了自己的博客。以后我会尝试在这上面分享我的生活和学习。包括很多的<strong>算法</strong>和<strong>计算机</strong>知识也会在这里分享。由于本人才疏学浅，所理解的知识难免存在不够好的地方，欢迎指正和交流！</p>
+<h2 id="写博客的理由"><a class="markdownIt-Anchor" href="#写博客的理由"></a> 写博客的理由</h2>
+<p>在我初学计算机的时候，我曾经也是个P都不懂的小白。经常进行各种傻逼操作，我和我的电脑都累坏了。<br />
+<img src=http://www.mcrchina.com/uploads/allimg/202010/05/20173131044176031.jpg><br />
+看了很多大佬的博客还有帖子，我才找到正确的路。<s>于是，我也想成为学弟学妹的领路人</s>。总之就是这种情况。<br />
+还有就是我其实是一个非常健忘的people。所以我想把我学到的算法，学到的知识记录下来，管他有没有人看，我自己看。在浏览器里看总比在doc里面看养眼多了吧。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>加油，先更他个一百篇！</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
   </entry>
   <entry>
     <title>第十二届蓝桥杯省赛C++ A组题解</title>
@@ -543,27 +385,185 @@ int main()
         <category>竞赛</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>算法</tag>
+        <tag>C++</tag>
         <tag>蓝桥杯</tag>
       </tags>
   </entry>
   <entry>
-    <title>我的第一篇博客</title>
-    <url>//post/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-1.html</url>
-    <content><![CDATA[<h2 id="博客的开始"><a class="markdownIt-Anchor" href="#博客的开始"></a> 博客的开始</h2>
-<p>经过了一天的<s>努力</s>，我参照了很多帖子，终于在github平台上搭建起了自己的博客。以后我会尝试在这上面分享我的生活和学习。包括很多的<strong>算法</strong>和<strong>计算机</strong>知识也会在这里分享。由于本人才疏学浅，所理解的知识难免存在不够好的地方，欢迎指正和交流！</p>
-<h2 id="写博客的理由"><a class="markdownIt-Anchor" href="#写博客的理由"></a> 写博客的理由</h2>
-<p>在我初学计算机的时候，我曾经也是个P都不懂的小白。经常进行各种傻逼操作，我和我的电脑都累坏了。<br />
-<img src=http://www.mcrchina.com/uploads/allimg/202010/05/20173131044176031.jpg><br />
-看了很多大佬的博客还有帖子，我才找到正确的路。<s>于是，我也想成为学弟学妹的领路人</s>。总之就是这种情况。<br />
-还有就是我其实是一个非常健忘的people。所以我想把我学到的算法，学到的知识记录下来，管他有没有人看，我自己看。在浏览器里看总比在doc里面看养眼多了吧。</p>
-<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
-<p>加油，先更他个一百篇！</p>
-]]></content>
+    <title>第十一届蓝桥杯省赛C++ A组题解</title>
+    <url>//post/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9BC-A%E7%BB%84%E9%A2%98%E8%A7%A3.html</url>
+    <content><![CDATA[<p>出于能力和精力问题，有一部分题目暂无题解，见谅</p>
+<h2 id="试题a-门牌制作"><a class="markdownIt-Anchor" href="#试题a-门牌制作"></a> 试题A 门牌制作</h2>
+<p>小蓝要为一条街的住户制作门牌号<br />
+这条街一共有 2020 位住户，门牌号从 1 到 2020 编号。小蓝制作门牌的方法是先制作 0 到 9 这几个数字字符，最后根据需要将字符粘贴到门牌上，例如门牌 1017 需要依次粘贴字符 1、0、1、7，即需要 1 个字符 0，2 个字符 1，1 个字符 7。<br />
+请问要制作所有的 1 到 2020 号门牌，总共需要多少个字符 2?</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int sum &#x3D; 0;
+void find2(int a)
+&#123;
+    while (a !&#x3D; 0)
+    &#123;
+        if (a % 10 &#x3D;&#x3D; 2)
+            sum++;
+        a &#x2F;&#x3D; 10;
+    &#125;
+&#125;
+int main()
+&#123;
+    for (int i &#x3D; 0; i &lt;&#x3D; 2020; i++)
+        find2(i);
+    cout &lt;&lt; sum;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="试题b-既约分数"><a class="markdownIt-Anchor" href="#试题b-既约分数"></a> 试题B 既约分数</h2>
+<p>如果一个分数的分子和分母的最大公约数是1，这个分数称为既约分数。例如，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">3/4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord">/</span><span class="mord">4</span></span></span></span> ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">5/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">/</span><span class="mord">2</span></span></span></span> ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1/8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">8</span></span></span></span>  ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn><mi mathvariant="normal">/</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">7/1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord">/</span><span class="mord">1</span></span></span></span> 都是既约分数。请问，有多少个既约分数，分子和分母都是1 到2020 之间的整数（包括1和2020）？</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int GreatestCommonDivisor(int a, int b)
+&#123;
+    if (a &#x3D;&#x3D; 0 || b &#x3D;&#x3D; 0)
+        return 1;
+    int tmp;
+    while (a % b !&#x3D; 0)
+    &#123;
+        tmp &#x3D; a;
+        a &#x3D; b;
+        b &#x3D; tmp % b;
+    &#125;
+    return b;
+&#125;
+int main()
+&#123;
+    int sum &#x3D; 0;
+    for (int i &#x3D; 1; i &lt; 2021; i++)
+        for (int j &#x3D; 1; j &lt; 2021; j++)
+            if (GreatestCommonDivisor(i, j) &#x3D;&#x3D; 1)
+                sum++;
+    cout &lt;&lt; sum;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="试题c-蛇形填数"><a class="markdownIt-Anchor" href="#试题c-蛇形填数"></a> 试题C 蛇形填数</h2>
+<p>如下图所示，小明用从 1 开始的正整数“蛇形”填充无限大的矩阵。<br />
+1 2 6 7 15 …<br />
+3 5 8 14 …<br />
+4 9 13 …<br />
+10 12 …<br />
+11 …<br />
+…<br />
+求20行第20列的数字<br />
+观察规律可得第i行第i列公式为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><msup><mi>i</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2i^2-2i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span><br />
+求出答案为761</p>
+<h2 id="试题d-七段码"><a class="markdownIt-Anchor" href="#试题d-七段码"></a> 试题D 七段码</h2>
+<p>有127中情况，用用二进制可以表示哪个灯亮了哪个灯没亮；<br />
+建图，然后就深度优先遍历看看亮的灯是否联通</p>
+<h2 id="试题f-平面分割"><a class="markdownIt-Anchor" href="#试题f-平面分割"></a> 试题F 平面分割</h2>
+<p>20 个圆和20 条直线最多能把平面分成多少个部分？</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()
+&#123;
+    int n&#x3D;20;
+    int m&#x3D;20;
+    int ans&#x3D;1+(n*(n+1))&#x2F;2+(m*(2*n+2*n+2*(m-1)))&#x2F;2;
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="试题f-成绩分析"><a class="markdownIt-Anchor" href="#试题f-成绩分析"></a> 试题F 成绩分析</h2>
+<p>小蓝给学生们组织了一场考试，卷面总分为100分，每个学生的得分都是一个0到100的整数。请计算这次考试的最高分、最低分和平均分</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main()
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    int list[n];
+    double sum &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; n;i++)
+    &#123;
+        cin &gt;&gt; list[i];
+        sum +&#x3D; list[i];
+    &#125;
+    sort(list, list + n);
+    cout &lt;&lt; list[n - 1] &lt;&lt; endl
+         &lt;&lt; list[0] &lt;&lt; endl
+         &lt;&lt; sum &#x2F; n;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="试题g-回文日期"><a class="markdownIt-Anchor" href="#试题g-回文日期"></a> 试题G 回文日期</h2>
+<p>2020 年春节期间，有一个特殊的日期引起了大家的注意：2020 年 2 月 2日。因为如果将这个日期按 “yyyymmdd” 的格式写成一个 8 位数是 20200202，恰好是一个回文数。我们称这样的日期是回文日期。有人表示 20200202 是 “千年一遇” 的特殊日子。对此小明很不认同，因为不到 2 年之后就是下一个回文日期：20211202 即 2021 年 12 月 2 日。也有人表示 20200202 并不仅仅是一个回文日期，还是一个 ABABBABA型的回文日期。对此小明也不认同，因为大约 100 年后就能遇到下一个ABABBABA 型的回文日期：21211212 即 2121 年 12 月 12 日。算不上 “千年一遇”，顶多算 “千年两遇”。给定一个 8 位数的日期，请你计算该日期之后下一个回文日期和下一个ABABBABA 型的回文日期各是哪一天。</p>
+<p>解：一共约366种回文日期，用sort排序然后与输入对比，找到之后就输出。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+string turn(int a)&#x2F;&#x2F;转化为标准格式输出
+&#123;
+    string ans;
+    for (int i &#x3D; 0; i &lt; 8;i++)
+    &#123;
+        ans &#x3D; char(a % 10 + &#39;0&#39;) + ans;
+        a &#x2F;&#x3D; 10;
+    &#125;
+    return ans;
+&#125;
+int rev(int a)&#x2F;&#x2F;对 （月&#x2F;日） 进行回文获得年份
+&#123;
+    int ans &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; 4;i++)
+    &#123;
+        ans &#x3D; ans * 10 + a % 10;
+        a &#x2F;&#x3D; 10;
+    &#125;
+    return ans;
+&#125;
+int main()
+&#123;
+    int lists[370], p &#x3D; 0;&#x2F;&#x2F;所有回文
+    int abab[14], l &#x3D; 0;&#x2F;&#x2F;abab形回文
+    int month[] &#x3D; &#123;0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;&#x2F;&#x2F;十二个月
+    for (int i &#x3D; 1; i &lt;&#x3D; 12; i++)
+    &#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; month[i]; j++)
+        &#123;
+            int k &#x3D; i * 100 + j;
+            k &#x3D; rev(k) * 10000 + k;
+            lists[p++] &#x3D; k;
+            if (i &#x3D;&#x3D; j &amp;&amp; i &#x2F; 10 !&#x3D; i % 10)&#x2F;&#x2F;判断abab形回文
+            &#123;
+                abab[l++] &#x3D; k;
+            &#125;
+        &#125;
+    &#125;
+    lists[p++] &#x3D; 92200229;&#x2F;&#x2F;闰年
+    sort(lists, lists + p);
+    sort(abab, abab + l);
+    int stds;
+    cin &gt;&gt; stds;
+    for (int i &#x3D; 0; i &lt; p; i++)
+    &#123;
+        if (lists[i] &gt; stds)
+        &#123;
+            cout &lt;&lt; turn(lists[i]);
+            break;
+        &#125;   
+    &#125;
+    cout &lt;&lt; endl;
+    for (int i &#x3D; 0; i &lt; l; i++)
+    &#123;
+        if (abab[i] &gt; stds)
+        &#123;
+            cout &lt;&lt; turn(abab[i]);
+            break;
+        &#125;   
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       <categories>
-        <category>生活</category>
+        <category>竞赛</category>
       </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>C++</tag>
+        <tag>蓝桥杯</tag>
+      </tags>
   </entry>
   <entry>
     <title>第十届蓝桥杯省赛C++ A组题解</title>
@@ -867,8 +867,8 @@ bool isab(int x)&#123;
         <category>竞赛</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>算法</tag>
+        <tag>C++</tag>
         <tag>蓝桥杯</tag>
       </tags>
   </entry>
