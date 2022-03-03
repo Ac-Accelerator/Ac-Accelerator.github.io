@@ -7,9 +7,67 @@
 <p>设三个指针，第一个用来指向原字符串，表示当前位置。剩下两个分别用来指向当前正在进行匹配的字符。  <br />
 这是最简单的字符串匹配，其效率比较低，在算法竞赛中最好不要使用。</p>
 <h2 id="2kmp算法"><a class="markdownIt-Anchor" href="#2kmp算法"></a> 2.KMP算法：</h2>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">get_Next</span><span class="hljs-params">(string target, <span class="hljs-type">int</span> tl, <span class="hljs-type">int</span> *Next)</span> <span class="hljs-comment">//求出Next数组</span></span><br><span class="hljs-function"></span>&#123;                                               <span class="hljs-comment">//Next数组是从 target[0到i-1]前子串 的前缀后缀最大值</span><br>    <span class="hljs-type">int</span> point1 = <span class="hljs-number">0</span>, point2;<br>    Next[<span class="hljs-number">0</span>] = point2 = <span class="hljs-number">-1</span>;                                    <span class="hljs-comment">//next数组首位默认为-1</span><br>    <span class="hljs-keyword">while</span> (point1 &lt; tl)                                       <span class="hljs-comment">//边界条件</span><br>        <span class="hljs-keyword">if</span> (point2 == <span class="hljs-number">-1</span> || target[point1] == target[point2]) <span class="hljs-comment">//类似于KMP的匹配</span><br>            Next[++point1] = ++point2;<br>        <span class="hljs-keyword">else</span><br>            point2 = Next[point2]; <span class="hljs-comment">//失配</span><br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">KMP</span><span class="hljs-params">(string origin, string target, <span class="hljs-type">int</span> ol, <span class="hljs-type">int</span> tl)</span><span class="hljs-comment">//返回匹配条数的函数</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> Next[tl], sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">get_Next</span>(target, tl, Next); <span class="hljs-comment">//获得next数组</span><br>    <span class="hljs-type">int</span> point1 = <span class="hljs-number">0</span>, point2 = <span class="hljs-number">0</span>; <span class="hljs-comment">//从0位开始匹配</span><br>    <span class="hljs-keyword">while</span> (point1 &lt; ol)         <span class="hljs-comment">//临界值</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (point2 == <span class="hljs-number">-1</span> || origin[point1] == target[point2]) <span class="hljs-comment">//相应字符匹配成功，继续</span><br>            point1++, point2++;<br>        <span class="hljs-keyword">else</span><br>            point2 = Next[point2]; <span class="hljs-comment">//失配</span><br>        <span class="hljs-keyword">if</span> (point2 == tl)<br>            sum++, point2 = Next[point2]; <span class="hljs-comment">//point2==tl时，全字符串匹配成功，sum+1，point2置为Next[point2]继续开始新一轮匹配</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> sum; <span class="hljs-comment">//返回</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void get_Next(string target, int tl, int *Next) &#x2F;&#x2F;求出Next数组
+&#123;                                               &#x2F;&#x2F;Next数组是从 target[0到i-1]前子串 的前缀后缀最大值
+    int point1 &#x3D; 0, point2;
+    Next[0] &#x3D; point2 &#x3D; -1;                                    &#x2F;&#x2F;next数组首位默认为-1
+    while (point1 &lt; tl)                                       &#x2F;&#x2F;边界条件
+        if (point2 &#x3D;&#x3D; -1 || target[point1] &#x3D;&#x3D; target[point2]) &#x2F;&#x2F;类似于KMP的匹配
+            Next[++point1] &#x3D; ++point2;
+        else
+            point2 &#x3D; Next[point2]; &#x2F;&#x2F;失配
+&#125;
+int KMP(string origin, string target, int ol, int tl)&#x2F;&#x2F;返回匹配条数的函数
+&#123;
+    int Next[tl], sum &#x3D; 0;
+    get_Next(target, tl, Next); &#x2F;&#x2F;获得next数组
+    int point1 &#x3D; 0, point2 &#x3D; 0; &#x2F;&#x2F;从0位开始匹配
+    while (point1 &lt; ol)         &#x2F;&#x2F;临界值
+    &#123;
+        if (point2 &#x3D;&#x3D; -1 || origin[point1] &#x3D;&#x3D; target[point2]) &#x2F;&#x2F;相应字符匹配成功，继续
+            point1++, point2++;
+        else
+            point2 &#x3D; Next[point2]; &#x2F;&#x2F;失配
+        if (point2 &#x3D;&#x3D; tl)
+            sum++, point2 &#x3D; Next[point2]; &#x2F;&#x2F;point2&#x3D;&#x3D;tl时，全字符串匹配成功，sum+1，point2置为Next[point2]继续开始新一轮匹配
+    &#125;
+    return sum; &#x2F;&#x2F;返回
+&#125;</code></pre>
 <h2 id="sunday算法"><a class="markdownIt-Anchor" href="#sunday算法"></a> Sunday算法：</h2>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">GetNext</span><span class="hljs-params">(string &amp;p, <span class="hljs-type">int</span> &amp;ot, <span class="hljs-type">int</span> *Next, <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> sizes)</span> <span class="hljs-comment">//标记各个字符所在的最大位置</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">memset</span>(Next, <span class="hljs-number">0</span>, sizes);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= ot; i++) <span class="hljs-comment">//标记</span><br>        Next[<span class="hljs-built_in">int</span>(p[i - <span class="hljs-number">1</span>])] = i;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Sunday</span><span class="hljs-params">(string &amp;origin, <span class="hljs-type">int</span> &amp;ol, string &amp;target, <span class="hljs-type">int</span> &amp;tl)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> Next[MAX_CHAR], <span class="hljs-comment">//声明next数组，用于存放字符位移量</span><br>        sum = <span class="hljs-number">0</span>;        <span class="hljs-comment">//匹配的数量</span><br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> sizes = <span class="hljs-built_in">sizeof</span>(Next);<br>    <span class="hljs-built_in">GetNext</span>(target, tl, Next, sizes);<br><br>    <span class="hljs-type">int</span> j, k; <span class="hljs-comment">// origin 的下标 . target 的下标</span><br>    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (i &lt;= ol - tl) <span class="hljs-comment">//走到尾部退出循环</span><br>    &#123;<br>        j = i, k = <span class="hljs-number">0</span>;                                      <span class="hljs-comment">// origin的下标指向最新的位置，target的下标重置，指向首位</span><br>        <span class="hljs-keyword">while</span> (j &lt; ol &amp;&amp; k &lt; tl &amp;&amp; origin[j] == target[k]) <span class="hljs-comment">//如果相同，且未越界，则进行下一个字符的比对</span><br>            j++, k++;<br><br>        <span class="hljs-keyword">if</span> (k == tl) <span class="hljs-comment">//如果比对成功，则有k= target的长度，可进行操作</span><br>        &#123;<br>            sum++;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (i + tl &lt; ol)                               <span class="hljs-comment">//如果在范围内，则重新将i定义为</span><br>            i += (tl - Next[<span class="hljs-built_in">int</span>(origin[i + tl])] + <span class="hljs-number">1</span>); <span class="hljs-comment">////////****算法核心****////////</span><br>        <span class="hljs-comment">/*  origin[i+tl]  指的是原字符串下一个字符，next[]是储存该字符位移量的数组。</span><br><span class="hljs-comment">            如果target里有该字符，则进行指定长度的位移，没有则位移 (target的长度 +1)   */</span><br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">break</span>; <span class="hljs-comment">//优化</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> sum;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void GetNext(string &amp;p, int &amp;ot, int *Next, unsigned long long sizes) &#x2F;&#x2F;标记各个字符所在的最大位置
+&#123;
+    memset(Next, 0, sizes);
+    for (int i &#x3D; 1; i &lt;&#x3D; ot; i++) &#x2F;&#x2F;标记
+        Next[int(p[i - 1])] &#x3D; i;
+&#125;
+int Sunday(string &amp;origin, int &amp;ol, string &amp;target, int &amp;tl)
+&#123;
+    int Next[MAX_CHAR], &#x2F;&#x2F;声明next数组，用于存放字符位移量
+        sum &#x3D; 0;        &#x2F;&#x2F;匹配的数量
+    unsigned long long sizes &#x3D; sizeof(Next);
+    GetNext(target, tl, Next, sizes);
+
+    int j, k; &#x2F;&#x2F; origin 的下标 . target 的下标
+    int i &#x3D; 0;
+    while (i &lt;&#x3D; ol - tl) &#x2F;&#x2F;走到尾部退出循环
+    &#123;
+        j &#x3D; i, k &#x3D; 0;                                      &#x2F;&#x2F; origin的下标指向最新的位置，target的下标重置，指向首位
+        while (j &lt; ol &amp;&amp; k &lt; tl &amp;&amp; origin[j] &#x3D;&#x3D; target[k]) &#x2F;&#x2F;如果相同，且未越界，则进行下一个字符的比对
+            j++, k++;
+
+        if (k &#x3D;&#x3D; tl) &#x2F;&#x2F;如果比对成功，则有k&#x3D; target的长度，可进行操作
+        &#123;
+            sum++;
+        &#125;
+        if (i + tl &lt; ol)                               &#x2F;&#x2F;如果在范围内，则重新将i定义为
+            i +&#x3D; (tl - Next[int(origin[i + tl])] + 1); &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;****算法核心****&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
+        &#x2F;*  origin[i+tl]  指的是原字符串下一个字符，next[]是储存该字符位移量的数组。
+            如果target里有该字符，则进行指定长度的位移，没有则位移 (target的长度 +1)   *&#x2F;
+        else
+            break; &#x2F;&#x2F;优化
+    &#125;
+    return sum;
+&#125;</code></pre>
 <p>上述两种算法都是比较快速的算法，都是通过初始化Next数组，来实现对比位置的快速跳转。其中KMP属于时间复杂度稳定的算法，在ACM竞赛中经常使用，由此来避免特殊的字符串。而Sunday算法属于时间复杂度不稳定的算法，偏向实用，在实际工程中的效率KMP算法高。</p>
 ]]></content>
       <categories>
@@ -46,10 +104,50 @@
 <p>小蓝要为一条街的住户制作门牌号<br />
 这条街一共有 2020 位住户，门牌号从 1 到 2020 编号。小蓝制作门牌的方法是先制作 0 到 9 这几个数字字符，最后根据需要将字符粘贴到门牌上，例如门牌 1017 需要依次粘贴字符 1、0、1、7，即需要 1 个字符 0，2 个字符 1，1 个字符 7。<br />
 请问要制作所有的 1 到 2020 号门牌，总共需要多少个字符 2?</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">find2</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (a != <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (a % <span class="hljs-number">10</span> == <span class="hljs-number">2</span>)<br>            sum++;<br>        a /= <span class="hljs-number">10</span>;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">2020</span>; i++)<br>        <span class="hljs-built_in">find2</span>(i);<br>    cout &lt;&lt; sum;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int sum &#x3D; 0;
+void find2(int a)
+&#123;
+    while (a !&#x3D; 0)
+    &#123;
+        if (a % 10 &#x3D;&#x3D; 2)
+            sum++;
+        a &#x2F;&#x3D; 10;
+    &#125;
+&#125;
+int main()
+&#123;
+    for (int i &#x3D; 0; i &lt;&#x3D; 2020; i++)
+        find2(i);
+    cout &lt;&lt; sum;
+&#125;</code></pre>
 <h2 id="试题b-既约分数"><a class="markdownIt-Anchor" href="#试题b-既约分数"></a> 试题B 既约分数</h2>
 <p>如果一个分数的分子和分母的最大公约数是1，这个分数称为既约分数。例如，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">3/4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord">/</span><span class="mord">4</span></span></span></span> ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">5/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">/</span><span class="mord">2</span></span></span></span> ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1/8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">8</span></span></span></span>  ， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn><mi mathvariant="normal">/</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">7/1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord">/</span><span class="mord">1</span></span></span></span> 都是既约分数。请问，有多少个既约分数，分子和分母都是1 到2020 之间的整数（包括1和2020）？</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">GreatestCommonDivisor</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (a == <span class="hljs-number">0</span> || b == <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> tmp;<br>    <span class="hljs-keyword">while</span> (a % b != <span class="hljs-number">0</span>)<br>    &#123;<br>        tmp = a;<br>        a = b;<br>        b = tmp % b;<br>    &#125;<br>    <span class="hljs-keyword">return</span> b;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">2021</span>; i++)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt; <span class="hljs-number">2021</span>; j++)<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">GreatestCommonDivisor</span>(i, j) == <span class="hljs-number">1</span>)<br>                sum++;<br>    cout &lt;&lt; sum;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int GreatestCommonDivisor(int a, int b)
+&#123;
+    if (a &#x3D;&#x3D; 0 || b &#x3D;&#x3D; 0)
+        return 1;
+    int tmp;
+    while (a % b !&#x3D; 0)
+    &#123;
+        tmp &#x3D; a;
+        a &#x3D; b;
+        b &#x3D; tmp % b;
+    &#125;
+    return b;
+&#125;
+int main()
+&#123;
+    int sum &#x3D; 0;
+    for (int i &#x3D; 1; i &lt; 2021; i++)
+        for (int j &#x3D; 1; j &lt; 2021; j++)
+            if (GreatestCommonDivisor(i, j) &#x3D;&#x3D; 1)
+                sum++;
+    cout &lt;&lt; sum;
+&#125;</code></pre>
 <h2 id="试题c-蛇形填数"><a class="markdownIt-Anchor" href="#试题c-蛇形填数"></a> 试题C 蛇形填数</h2>
 <p>如下图所示，小明用从 1 开始的正整数“蛇形”填充无限大的矩阵。<br />
 1 2 6 7 15 …<br />
@@ -66,14 +164,104 @@
 建图，然后就深度优先遍历看看亮的灯是否联通</p>
 <h2 id="试题f-平面分割"><a class="markdownIt-Anchor" href="#试题f-平面分割"></a> 试题F 平面分割</h2>
 <p>20 个圆和20 条直线最多能把平面分成多少个部分？</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n=<span class="hljs-number">20</span>;<br>    <span class="hljs-type">int</span> m=<span class="hljs-number">20</span>;<br>    <span class="hljs-type">int</span> ans=<span class="hljs-number">1</span>+(n*(n+<span class="hljs-number">1</span>))/<span class="hljs-number">2</span>+(m*(<span class="hljs-number">2</span>*n+<span class="hljs-number">2</span>*n+<span class="hljs-number">2</span>*(m<span class="hljs-number">-1</span>)))/<span class="hljs-number">2</span>;<br>    cout&lt;&lt;ans&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()
+&#123;
+    int n&#x3D;20;
+    int m&#x3D;20;
+    int ans&#x3D;1+(n*(n+1))&#x2F;2+(m*(2*n+2*n+2*(m-1)))&#x2F;2;
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+&#125;</code></pre>
 <h2 id="试题f-成绩分析"><a class="markdownIt-Anchor" href="#试题f-成绩分析"></a> 试题F 成绩分析</h2>
 <p>小蓝给学生们组织了一场考试，卷面总分为100分，每个学生的得分都是一个0到100的整数。请计算这次考试的最高分、最低分和平均分</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br>    <span class="hljs-type">int</span> list[n];<br>    <span class="hljs-type">double</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n;i++)<br>    &#123;<br>        cin &gt;&gt; list[i];<br>        sum += list[i];<br>    &#125;<br>    <span class="hljs-built_in">sort</span>(list, list + n);<br>    cout &lt;&lt; list[n - <span class="hljs-number">1</span>] &lt;&lt; endl<br>         &lt;&lt; list[<span class="hljs-number">0</span>] &lt;&lt; endl<br>         &lt;&lt; sum / n;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main()
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    int list[n];
+    double sum &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; n;i++)
+    &#123;
+        cin &gt;&gt; list[i];
+        sum +&#x3D; list[i];
+    &#125;
+    sort(list, list + n);
+    cout &lt;&lt; list[n - 1] &lt;&lt; endl
+         &lt;&lt; list[0] &lt;&lt; endl
+         &lt;&lt; sum &#x2F; n;
+&#125;</code></pre>
 <h2 id="试题g-回文日期"><a class="markdownIt-Anchor" href="#试题g-回文日期"></a> 试题G 回文日期</h2>
 <p>2020 年春节期间，有一个特殊的日期引起了大家的注意：2020 年 2 月 2日。因为如果将这个日期按 “yyyymmdd” 的格式写成一个 8 位数是 20200202，恰好是一个回文数。我们称这样的日期是回文日期。有人表示 20200202 是 “千年一遇” 的特殊日子。对此小明很不认同，因为不到 2 年之后就是下一个回文日期：20211202 即 2021 年 12 月 2 日。也有人表示 20200202 并不仅仅是一个回文日期，还是一个 ABABBABA型的回文日期。对此小明也不认同，因为大约 100 年后就能遇到下一个ABABBABA 型的回文日期：21211212 即 2121 年 12 月 12 日。算不上 “千年一遇”，顶多算 “千年两遇”。给定一个 8 位数的日期，请你计算该日期之后下一个回文日期和下一个ABABBABA 型的回文日期各是哪一天。</p>
 <p>解：一共约366种回文日期，用sort排序然后与输入对比，找到之后就输出。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function">string <span class="hljs-title">turn</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span><span class="hljs-comment">//转化为标准格式输出</span></span><br><span class="hljs-function"></span>&#123;<br>    string ans;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>;i++)<br>    &#123;<br>        ans = <span class="hljs-built_in">char</span>(a % <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;0&#x27;</span>) + ans;<br>        a /= <span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">rev</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span><span class="hljs-comment">//对 （月/日） 进行回文获得年份</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>;i++)<br>    &#123;<br>        ans = ans * <span class="hljs-number">10</span> + a % <span class="hljs-number">10</span>;<br>        a /= <span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> lists[<span class="hljs-number">370</span>], p = <span class="hljs-number">0</span>;<span class="hljs-comment">//所有回文</span><br>    <span class="hljs-type">int</span> abab[<span class="hljs-number">14</span>], l = <span class="hljs-number">0</span>;<span class="hljs-comment">//abab形回文</span><br>    <span class="hljs-type">int</span> month[] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">31</span>, <span class="hljs-number">28</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>&#125;;<span class="hljs-comment">//十二个月</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">12</span>; i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= month[i]; j++)<br>        &#123;<br>            <span class="hljs-type">int</span> k = i * <span class="hljs-number">100</span> + j;<br>            k = <span class="hljs-built_in">rev</span>(k) * <span class="hljs-number">10000</span> + k;<br>            lists[p++] = k;<br>            <span class="hljs-keyword">if</span> (i == j &amp;&amp; i / <span class="hljs-number">10</span> != i % <span class="hljs-number">10</span>)<span class="hljs-comment">//判断abab形回文</span><br>            &#123;<br>                abab[l++] = k;<br>            &#125;<br>        &#125;<br>    &#125;<br>    lists[p++] = <span class="hljs-number">92200229</span>;<span class="hljs-comment">//闰年</span><br>    <span class="hljs-built_in">sort</span>(lists, lists + p);<br>    <span class="hljs-built_in">sort</span>(abab, abab + l);<br>    <span class="hljs-type">int</span> stds;<br>    cin &gt;&gt; stds;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; p; i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (lists[i] &gt; stds)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-built_in">turn</span>(lists[i]);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;   <br>    &#125;<br>    cout &lt;&lt; endl;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; l; i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (abab[i] &gt; stds)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-built_in">turn</span>(abab[i]);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;   <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+string turn(int a)&#x2F;&#x2F;转化为标准格式输出
+&#123;
+    string ans;
+    for (int i &#x3D; 0; i &lt; 8;i++)
+    &#123;
+        ans &#x3D; char(a % 10 + &#39;0&#39;) + ans;
+        a &#x2F;&#x3D; 10;
+    &#125;
+    return ans;
+&#125;
+int rev(int a)&#x2F;&#x2F;对 （月&#x2F;日） 进行回文获得年份
+&#123;
+    int ans &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; 4;i++)
+    &#123;
+        ans &#x3D; ans * 10 + a % 10;
+        a &#x2F;&#x3D; 10;
+    &#125;
+    return ans;
+&#125;
+int main()
+&#123;
+    int lists[370], p &#x3D; 0;&#x2F;&#x2F;所有回文
+    int abab[14], l &#x3D; 0;&#x2F;&#x2F;abab形回文
+    int month[] &#x3D; &#123;0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;&#x2F;&#x2F;十二个月
+    for (int i &#x3D; 1; i &lt;&#x3D; 12; i++)
+    &#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; month[i]; j++)
+        &#123;
+            int k &#x3D; i * 100 + j;
+            k &#x3D; rev(k) * 10000 + k;
+            lists[p++] &#x3D; k;
+            if (i &#x3D;&#x3D; j &amp;&amp; i &#x2F; 10 !&#x3D; i % 10)&#x2F;&#x2F;判断abab形回文
+            &#123;
+                abab[l++] &#x3D; k;
+            &#125;
+        &#125;
+    &#125;
+    lists[p++] &#x3D; 92200229;&#x2F;&#x2F;闰年
+    sort(lists, lists + p);
+    sort(abab, abab + l);
+    int stds;
+    cin &gt;&gt; stds;
+    for (int i &#x3D; 0; i &lt; p; i++)
+    &#123;
+        if (lists[i] &gt; stds)
+        &#123;
+            cout &lt;&lt; turn(lists[i]);
+            break;
+        &#125;   
+    &#125;
+    cout &lt;&lt; endl;
+    for (int i &#x3D; 0; i &lt; l; i++)
+    &#123;
+        if (abab[i] &gt; stds)
+        &#123;
+            cout &lt;&lt; turn(abab[i]);
+            break;
+        &#125;   
+    &#125;
+&#125;</code></pre>]]></content>
       <categories>
         <category>竞赛</category>
       </categories>
@@ -89,10 +277,51 @@
     <content><![CDATA[<p>出于能力和精力问题，有一部分题目暂无题解，见谅</p>
 <h2 id="试题a-平方和"><a class="markdownIt-Anchor" href="#试题a-平方和"></a> 试题A 平方和</h2>
 <p>小明对数位中含有2、0、1、9的数字很感兴趣，在1到40中这样的数包括1、2、9、10至32、39和40，共28个，他们的和是574，平方和是14362。注意，平方和是指将每个数分别平方后求和。请问，在1到2019中，所有这样的数的平方和是多少?</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (a != <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-type">int</span> t = a % <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">if</span> (t == <span class="hljs-number">0</span> || t == <span class="hljs-number">9</span> || t == <span class="hljs-number">1</span> || t == <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        a /= <span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> a = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">2020</span>; i++)<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">find</span>(i))<br>            a += i * i;<br>    cout &lt;&lt; a;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+bool find(int a)
+&#123;
+    while (a !&#x3D; 0)
+    &#123;
+        int t &#x3D; a % 10;
+        if (t &#x3D;&#x3D; 0 || t &#x3D;&#x3D; 9 || t &#x3D;&#x3D; 1 || t &#x3D;&#x3D; 2)
+            return true;
+        a &#x2F;&#x3D; 10;
+    &#125;
+    return false;
+&#125;
+int main()
+&#123;
+    unsigned long long a &#x3D; 0;
+    for (int i &#x3D; 1; i &lt; 2020; i++)
+        if (find(i))
+            a +&#x3D; i * i;
+    cout &lt;&lt; a;
+&#125;</code></pre>
 <h2 id="试题b-数列求值"><a class="markdownIt-Anchor" href="#试题b-数列求值"></a> 试题B 数列求值</h2>
 <p>给定数列1,1,1,3,5,9,17…，从第4项开始，每项都是前3项的和。求第20190324项的最后4位数字。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span>    </span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">cal</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>&amp;&amp;a!=<span class="hljs-number">0</span>; i++)<br>    &#123;<br>        ans = (a % <span class="hljs-number">10</span>) * <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>,i)+ans;<br>        a /= <span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-type">int</span> list[<span class="hljs-number">20190325</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">4</span>; i &lt; <span class="hljs-number">20190325</span>;i++)<br>    &#123;<br>        list[i] = <span class="hljs-built_in">cal</span>(list[i - <span class="hljs-number">1</span>] + list[i - <span class="hljs-number">2</span>] + list[i - <span class="hljs-number">3</span>]);<br>    &#125;<br>    cout &lt;&lt; list[<span class="hljs-number">20190324</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;    
+using namespace std;
+int cal(int a)
+&#123;
+    int ans &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; 4&amp;&amp;a!&#x3D;0; i++)
+    &#123;
+        ans &#x3D; (a % 10) * pow(10,i)+ans;
+        a &#x2F;&#x3D; 10;
+    &#125;
+    return ans;
+&#125;
+int list[20190325] &#x3D; &#123;0, 1, 1, 1&#125;;
+int main()
+&#123;
+    for (int i &#x3D; 4; i &lt; 20190325;i++)
+    &#123;
+        list[i] &#x3D; cal(list[i - 1] + list[i - 2] + list[i - 3]);
+    &#125;
+    cout &lt;&lt; list[20190324];
+&#125;</code></pre>
 <h2 id="试题c-最大降雨量"><a class="markdownIt-Anchor" href="#试题c-最大降雨量"></a> 试题C 最大降雨量</h2>
 <p>由于沙之国长年干旱，法师小明准备施展自己的一个神秘法术来求雨。这个法术需要用到他手中的49张法术符，上面分别写着1至49这49个数字。法术一共持续7周，每天小明都要使用一张法术符，法术符不能重复使用。每周，小明施展法术产生的能量为这周7张法术符上数字的中位数。法术施展完7周后，求雨将获得成功，降雨量为7周能量的中位数。由于干旱太久，小明希望这次求雨的降雨量尽可能大，请大最大值是多少?</p>
 <p>解：贪心算法，尽量取每周都取到能取得最大的中位数，然后加起来。</p>
@@ -122,14 +351,224 @@
 001001<br />
 110000<br />
 迷宫的入口为左上角，出口为右下角，在迷宫中，只能从一个位置走到这个它的上、下、左、右四个方向之一。对于上面的迷宫，从入口开始，可以按DRRURRDDDR 的顺序通过迷宫，一共 10 步。其中 D、U、L、R 分别表示向下、向上、向左、向右走。对于下面这个更复杂的迷宫（30 行 50 列），请找出一种通过迷宫的方式，其使用的步数最少，在步数最少的前提下，请找出字典序最小的一个作为答案。请注意在字典序中D &lt; L &lt; R &lt; U。（如果你把以下文字复制到文本文件中，请务必检查复制的内容是否与文档中的一致。在试题目录下有一个文件 maze.txt，内容与下面的文本相同）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">01010101001011001001010110010110100100001000101010<br>00001000100000101010010000100000001001100110100101<br>01111011010010001000001101001011100011000000010000<br>01000000001010100011010000101000001010101011001011<br>00011111000000101000010010100010100000101100000000<br>11001000110101000010101100011010011010101011110111<br>00011011010101001001001010000001000101001110000000<br>10100000101000100110101010111110011000010000111010<br>00111000001010100001100010000001000101001100001001<br>11000110100001110010001001010101010101010001101000<br>00010000100100000101001010101110100010101010000101<br>11100100101001001000010000010101010100100100010100<br>00000010000000101011001111010001100000101010100011<br>10101010011100001000011000010110011110110100001000<br>10101010100001101010100101000010100000111011101001<br>10000000101100010000101100101101001011100000000100<br>10101001000000010100100001000100000100011110101001<br>00101001010101101001010100011010101101110000110101<br>11001010000100001100000010100101000001000111000010<br>00001000110000110101101000000100101001001000011101<br>10100101000101000000001110110010110101101010100001<br>00101000010000110101010000100010001001000100010101<br>10100001000110010001000010101001010101011111010010<br>00000100101000000110010100101001000001000000000010<br>11010000001001110111001001000011101001011011101000<br>00000110100010001000100000001000011101000000110011<br>10101000101000100010001111100010101001010000001000<br>10000010100101001010110000000100101010001011101000<br>00111100001000010000000110111000000001000000001011<br>10000001100111010111010001000110111010101101111000<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">01010101001011001001010110010110100100001000101010
+00001000100000101010010000100000001001100110100101
+01111011010010001000001101001011100011000000010000
+01000000001010100011010000101000001010101011001011
+00011111000000101000010010100010100000101100000000
+11001000110101000010101100011010011010101011110111
+00011011010101001001001010000001000101001110000000
+10100000101000100110101010111110011000010000111010
+00111000001010100001100010000001000101001100001001
+11000110100001110010001001010101010101010001101000
+00010000100100000101001010101110100010101010000101
+11100100101001001000010000010101010100100100010100
+00000010000000101011001111010001100000101010100011
+10101010011100001000011000010110011110110100001000
+10101010100001101010100101000010100000111011101001
+10000000101100010000101100101101001011100000000100
+10101001000000010100100001000100000100011110101001
+00101001010101101001010100011010101101110000110101
+11001010000100001100000010100101000001000111000010
+00001000110000110101101000000100101001001000011101
+10100101000101000000001110110010110101101010100001
+00101000010000110101010000100010001001000100010101
+10100001000110010001000010101001010101011111010010
+00000100101000000110010100101001000001000000000010
+11010000001001110111001001000011101001011011101000
+00000110100010001000100000001000011101000000110011
+10101000101000100010001111100010101001010000001000
+10000010100101001010110000000100101010001011101000
+00111100001000010000000110111000000001000000001011
+10000001100111010111010001000110111010101101111000</code></pre>
 <p>解：广度优先搜索</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;deque&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">notout</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> x &gt;= <span class="hljs-number">0</span> &amp;&amp; x &lt; <span class="hljs-number">30</span> &amp;&amp; y &gt;= <span class="hljs-number">0</span> &amp;&amp; y &lt; <span class="hljs-number">50</span>;<br>&#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">point</span><br>&#123;<br>    <span class="hljs-type">int</span> x, y;<br>    <span class="hljs-type">char</span> front;<br>    <span class="hljs-type">bool</span> done = <span class="hljs-number">0</span>;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    point map[<span class="hljs-number">30</span>][<span class="hljs-number">50</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">30</span>; i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">50</span>; j++)<br>        &#123;<br>            <span class="hljs-type">char</span> t;<br>            cin &gt;&gt; t;<br>            map[i][j].x = i, map[i][j].y = j;<br>            <span class="hljs-keyword">if</span> (t - <span class="hljs-string">&#x27;0&#x27;</span> == <span class="hljs-number">1</span>)<br>            &#123;<br>                map[i][j].done = <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    deque&lt;point&gt; list;<br>    point start;<br>    start.x = <span class="hljs-number">0</span>, start.y = <span class="hljs-number">0</span>;<br>    list.<span class="hljs-built_in">push_back</span>(start);<br>    map[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>].done = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (!list.<span class="hljs-built_in">empty</span>())<br>    &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">notout</span>(list.<span class="hljs-built_in">begin</span>()-&gt;x, list.<span class="hljs-built_in">begin</span>()-&gt;y + <span class="hljs-number">1</span>) &amp;&amp; !map[list.<span class="hljs-built_in">begin</span>()-&gt;x][list.<span class="hljs-built_in">begin</span>()-&gt;y + <span class="hljs-number">1</span>].done)<br>        &#123;<br>            map[list.<span class="hljs-built_in">begin</span>()-&gt;x][list.<span class="hljs-built_in">begin</span>()-&gt;y + <span class="hljs-number">1</span>].done = <span class="hljs-number">1</span>;<br>            list.<span class="hljs-built_in">push_back</span>(map[list.<span class="hljs-built_in">begin</span>()-&gt;x][list.<span class="hljs-built_in">begin</span>()-&gt;y + <span class="hljs-number">1</span>]);<br>            map[list.<span class="hljs-built_in">begin</span>()-&gt;x][list.<span class="hljs-built_in">begin</span>()-&gt;y + <span class="hljs-number">1</span>].front = <span class="hljs-string">&#x27;R&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">notout</span>(list.<span class="hljs-built_in">begin</span>()-&gt;x - <span class="hljs-number">1</span>, list.<span class="hljs-built_in">begin</span>()-&gt;y) &amp;&amp; !map[list.<span class="hljs-built_in">begin</span>()-&gt;x - <span class="hljs-number">1</span>][list.<span class="hljs-built_in">begin</span>()-&gt;y].done)<br>        &#123;<br>            map[list.<span class="hljs-built_in">begin</span>()-&gt;x - <span class="hljs-number">1</span>][list.<span class="hljs-built_in">begin</span>()-&gt;y].done = <span class="hljs-number">1</span>;<br>            list.<span class="hljs-built_in">push_back</span>(map[list.<span class="hljs-built_in">begin</span>()-&gt;x - <span class="hljs-number">1</span>][list.<span class="hljs-built_in">begin</span>()-&gt;y]);<br>            map[list.<span class="hljs-built_in">begin</span>()-&gt;x - <span class="hljs-number">1</span>][list.<span class="hljs-built_in">begin</span>()-&gt;y].front = <span class="hljs-string">&#x27;U&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">notout</span>(list.<span class="hljs-built_in">begin</span>()-&gt;x + <span class="hljs-number">1</span>, list.<span class="hljs-built_in">begin</span>()-&gt;y) &amp;&amp; !map[list.<span class="hljs-built_in">begin</span>()-&gt;x + <span class="hljs-number">1</span>][list.<span class="hljs-built_in">begin</span>()-&gt;y].done)<br>        &#123;<br>            map[list.<span class="hljs-built_in">begin</span>()-&gt;x + <span class="hljs-number">1</span>][list.<span class="hljs-built_in">begin</span>()-&gt;y].done = <span class="hljs-number">1</span>;<br>            list.<span class="hljs-built_in">push_back</span>(map[list.<span class="hljs-built_in">begin</span>()-&gt;x + <span class="hljs-number">1</span>][list.<span class="hljs-built_in">begin</span>()-&gt;y]);<br>            map[list.<span class="hljs-built_in">begin</span>()-&gt;x + <span class="hljs-number">1</span>][list.<span class="hljs-built_in">begin</span>()-&gt;y].front = <span class="hljs-string">&#x27;D&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">notout</span>(list.<span class="hljs-built_in">begin</span>()-&gt;x, list.<span class="hljs-built_in">begin</span>()-&gt;y - <span class="hljs-number">1</span>) &amp;&amp; !map[list.<span class="hljs-built_in">begin</span>()-&gt;x][list.<span class="hljs-built_in">begin</span>()-&gt;y - <span class="hljs-number">1</span>].done)<br>        &#123;<br>            map[list.<span class="hljs-built_in">begin</span>()-&gt;x][list.<span class="hljs-built_in">begin</span>()-&gt;y - <span class="hljs-number">1</span>].done = <span class="hljs-number">1</span>;<br>            list.<span class="hljs-built_in">push_back</span>(map[list.<span class="hljs-built_in">begin</span>()-&gt;x][list.<span class="hljs-built_in">begin</span>()-&gt;y - <span class="hljs-number">1</span>]);<br>            map[list.<span class="hljs-built_in">begin</span>()-&gt;x][list.<span class="hljs-built_in">begin</span>()-&gt;y - <span class="hljs-number">1</span>].front = <span class="hljs-string">&#x27;L&#x27;</span>;<br>        &#125;<br>        list.<span class="hljs-built_in">pop_front</span>();<br>    &#125;<br>    start.x = <span class="hljs-number">29</span>, start.y = <span class="hljs-number">49</span>;<br>    string ans;<br>    <span class="hljs-keyword">while</span> (!(start.x == <span class="hljs-number">0</span> &amp;&amp; start.y == <span class="hljs-number">0</span>))<br>    &#123;<br>        ans = map[start.x][start.y].front + ans;<br>        <span class="hljs-keyword">if</span> (map[start.x][start.y].front == <span class="hljs-string">&#x27;U&#x27;</span>)<br>            start.x += <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (map[start.x][start.y].front == <span class="hljs-string">&#x27;D&#x27;</span>)<br>            start.x -= <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (map[start.x][start.y].front == <span class="hljs-string">&#x27;R&#x27;</span>)<br>            start.y -= <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (map[start.x][start.y].front == <span class="hljs-string">&#x27;L&#x27;</span>)<br>            start.y += <span class="hljs-number">1</span>;<br>    &#125;<br>    cout &lt;&lt; ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;deque&gt;
+using namespace std;
+
+bool notout(int x, int y)
+&#123;
+    return x &gt;&#x3D; 0 &amp;&amp; x &lt; 30 &amp;&amp; y &gt;&#x3D; 0 &amp;&amp; y &lt; 50;
+&#125;
+struct point
+&#123;
+    int x, y;
+    char front;
+    bool done &#x3D; 0;
+&#125;;
+int main()
+&#123;
+    point map[30][50];
+    for (int i &#x3D; 0; i &lt; 30; i++)
+    &#123;
+        for (int j &#x3D; 0; j &lt; 50; j++)
+        &#123;
+            char t;
+            cin &gt;&gt; t;
+            map[i][j].x &#x3D; i, map[i][j].y &#x3D; j;
+            if (t - &#39;0&#39; &#x3D;&#x3D; 1)
+            &#123;
+                map[i][j].done &#x3D; 1;
+            &#125;
+        &#125;
+    &#125;
+    deque&lt;point&gt; list;
+    point start;
+    start.x &#x3D; 0, start.y &#x3D; 0;
+    list.push_back(start);
+    map[0][0].done &#x3D; 1;
+    while (!list.empty())
+    &#123;
+        if (notout(list.begin()-&gt;x, list.begin()-&gt;y + 1) &amp;&amp; !map[list.begin()-&gt;x][list.begin()-&gt;y + 1].done)
+        &#123;
+            map[list.begin()-&gt;x][list.begin()-&gt;y + 1].done &#x3D; 1;
+            list.push_back(map[list.begin()-&gt;x][list.begin()-&gt;y + 1]);
+            map[list.begin()-&gt;x][list.begin()-&gt;y + 1].front &#x3D; &#39;R&#39;;
+        &#125;
+        if (notout(list.begin()-&gt;x - 1, list.begin()-&gt;y) &amp;&amp; !map[list.begin()-&gt;x - 1][list.begin()-&gt;y].done)
+        &#123;
+            map[list.begin()-&gt;x - 1][list.begin()-&gt;y].done &#x3D; 1;
+            list.push_back(map[list.begin()-&gt;x - 1][list.begin()-&gt;y]);
+            map[list.begin()-&gt;x - 1][list.begin()-&gt;y].front &#x3D; &#39;U&#39;;
+        &#125;
+        if (notout(list.begin()-&gt;x + 1, list.begin()-&gt;y) &amp;&amp; !map[list.begin()-&gt;x + 1][list.begin()-&gt;y].done)
+        &#123;
+            map[list.begin()-&gt;x + 1][list.begin()-&gt;y].done &#x3D; 1;
+            list.push_back(map[list.begin()-&gt;x + 1][list.begin()-&gt;y]);
+            map[list.begin()-&gt;x + 1][list.begin()-&gt;y].front &#x3D; &#39;D&#39;;
+        &#125;
+        if (notout(list.begin()-&gt;x, list.begin()-&gt;y - 1) &amp;&amp; !map[list.begin()-&gt;x][list.begin()-&gt;y - 1].done)
+        &#123;
+            map[list.begin()-&gt;x][list.begin()-&gt;y - 1].done &#x3D; 1;
+            list.push_back(map[list.begin()-&gt;x][list.begin()-&gt;y - 1]);
+            map[list.begin()-&gt;x][list.begin()-&gt;y - 1].front &#x3D; &#39;L&#39;;
+        &#125;
+        list.pop_front();
+    &#125;
+    start.x &#x3D; 29, start.y &#x3D; 49;
+    string ans;
+    while (!(start.x &#x3D;&#x3D; 0 &amp;&amp; start.y &#x3D;&#x3D; 0))
+    &#123;
+        ans &#x3D; map[start.x][start.y].front + ans;
+        if (map[start.x][start.y].front &#x3D;&#x3D; &#39;U&#39;)
+            start.x +&#x3D; 1;
+        else if (map[start.x][start.y].front &#x3D;&#x3D; &#39;D&#39;)
+            start.x -&#x3D; 1;
+        else if (map[start.x][start.y].front &#x3D;&#x3D; &#39;R&#39;)
+            start.y -&#x3D; 1;
+        else if (map[start.x][start.y].front &#x3D;&#x3D; &#39;L&#39;)
+            start.y +&#x3D; 1;
+    &#125;
+    cout &lt;&lt; ans;
+&#125;</code></pre>
 <h2 id="试题f-完全二叉树的权值"><a class="markdownIt-Anchor" href="#试题f-完全二叉树的权值"></a> 试题F 完全二叉树的权值</h2>
 <p>现在小明要把相同深度的节点的权值加在- - 起，他想知道哪个深度的节点权值之和最大?如果有多个深度的权值和同为最大，请你输出其中最小的深度。注:根的深度是1。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt;n;<br>    <span class="hljs-type">int</span> list[n];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n;i++)<br>        cin &gt;&gt; list[i];<br>    <span class="hljs-type">int</span> p=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> ma = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> c = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">log</span>(n+<span class="hljs-number">1</span>)/<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span>);i++)<br>    &#123;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, i);j++)<br>            sum += list[p++];<br>        <span class="hljs-keyword">if</span>(ma&lt;sum)<br>        &#123;<br>            ma = sum;<br>            c = i + <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; c;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main()
+&#123;
+    int n;
+    cin &gt;&gt;n;
+    int list[n];
+    for (int i &#x3D; 0; i &lt; n;i++)
+        cin &gt;&gt; list[i];
+    int p&#x3D;0;
+    int ma &#x3D; 0;
+    int c &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; log(n+1)&#x2F;log(2);i++)
+    &#123;
+        int sum &#x3D; 0;
+        for (int j &#x3D; 0; j &lt; pow(2, i);j++)
+            sum +&#x3D; list[p++];
+        if(ma&lt;sum)
+        &#123;
+            ma &#x3D; sum;
+            c &#x3D; i + 1;
+        &#125;
+    &#125;
+    cout &lt;&lt; c;
+&#125;</code></pre>
 <h2 id="试题g-外卖店优先级"><a class="markdownIt-Anchor" href="#试题g-外卖店优先级"></a> 试题G 外卖店优先级</h2>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ll long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> mon[<span class="hljs-number">2</span>][<span class="hljs-number">13</span>]=&#123;&#123;<span class="hljs-number">0</span>,<span class="hljs-number">31</span>,<span class="hljs-number">28</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">31</span>,<span class="hljs-number">29</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>&#125;&#125;;<br><span class="hljs-type">int</span> n;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isleap</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">islegaldate</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">ishui</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isab</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin &gt;&gt; n;<br>    <span class="hljs-type">int</span> t = n;<br>    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>,j = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(!i)&#123;<br>        t++;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">islegaldate</span>(t))&#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">ishui</span>(t))&#123;<br>                i = t;<br>            &#125;<br>        &#125;<br>    &#125;<br>    t = i<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">while</span>(!j)&#123;<br>        t++;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">islegaldate</span>(t))<br>        &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">ishui</span>(t))<br>            &#123;<br>                <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isab</span>(t))<br>                j = t;<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; i &lt;&lt; endl &lt;&lt; j &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isleap</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>((x%<span class="hljs-number">4</span>==<span class="hljs-number">0</span> &amp;&amp; x%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||(x%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>))&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">islegaldate</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-type">int</span> y=x/<span class="hljs-number">10000</span>;<br>    <span class="hljs-type">int</span> m=(x/<span class="hljs-number">100</span>)%<span class="hljs-number">100</span>;<br>    <span class="hljs-type">int</span> d=x%<span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">if</span>(y&gt;<span class="hljs-number">0</span> &amp;&amp; m&gt;<span class="hljs-number">0</span> &amp;&amp; m&lt;=<span class="hljs-number">12</span>)&#123;<br>        <span class="hljs-keyword">if</span>(d&lt;mon[<span class="hljs-built_in">isleap</span>(y)][m])<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">ishui</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-type">int</span> t=x,r=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(x)&#123;<br>        r=r*<span class="hljs-number">10</span>+x%<span class="hljs-number">10</span>;<br>        x/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(t==r)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isab</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-type">int</span> y=x/<span class="hljs-number">10000</span>;<br>    <span class="hljs-type">int</span> m=(x/<span class="hljs-number">100</span>)%<span class="hljs-number">100</span>;<br>    <span class="hljs-type">int</span> d=x%<span class="hljs-number">100</span>;<br>    <span class="hljs-type">int</span> k=y/<span class="hljs-number">100</span>;<br>    <span class="hljs-type">int</span> n=y%<span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">if</span>(k==n &amp;&amp; m==d)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+#define ll long long
+using namespace std;
+int mon[2][13]&#x3D;&#123;&#123;0,31,28,31,30,31,30,31,31,30,31,30,31&#125;,&#123;0,31,29,31,30,31,30,31,31,30,31,30,31&#125;&#125;;
+int n;
+bool isleap(int x);
+bool islegaldate(int x);
+bool ishui(int x);
+bool isab(int x);
+int main()&#123;
+    cin &gt;&gt; n;
+    int t &#x3D; n;
+    int i &#x3D; 0,j &#x3D; 0;
+    while(!i)&#123;
+        t++;
+        if(islegaldate(t))&#123;
+            if(ishui(t))&#123;
+                i &#x3D; t;
+            &#125;
+        &#125;
+    &#125;
+    t &#x3D; i-1;
+    while(!j)&#123;
+        t++;
+        if(islegaldate(t))
+        &#123;
+            if(ishui(t))
+            &#123;
+                if(isab(t))
+                j &#x3D; t;
+            &#125;
+        &#125;
+    &#125;
+    cout &lt;&lt; i &lt;&lt; endl &lt;&lt; j &lt;&lt; endl;
+    return 0;
+&#125;
+
+bool isleap(int x)&#123;
+    if((x%4&#x3D;&#x3D;0 &amp;&amp; x%100!&#x3D;0)||(x%400&#x3D;&#x3D;0))&#123;
+        return 1;
+    &#125;
+    return 0;
+&#125;
+
+bool islegaldate(int x)&#123;
+    int y&#x3D;x&#x2F;10000;
+    int m&#x3D;(x&#x2F;100)%100;
+    int d&#x3D;x%100;
+    if(y&gt;0 &amp;&amp; m&gt;0 &amp;&amp; m&lt;&#x3D;12)&#123;
+        if(d&lt;mon[isleap(y)][m])
+            return 1;
+    &#125;
+    return 0;
+&#125;
+
+bool ishui(int x)&#123;
+    int t&#x3D;x,r&#x3D;0;
+    while(x)&#123;
+        r&#x3D;r*10+x%10;
+        x&#x2F;&#x3D;10;
+    &#125;
+    if(t&#x3D;&#x3D;r)&#123;
+        return 1;
+    &#125;
+    return 0;
+&#125;
+
+bool isab(int x)&#123;
+    int y&#x3D;x&#x2F;10000;
+    int m&#x3D;(x&#x2F;100)%100;
+    int d&#x3D;x%100;
+    int k&#x3D;y&#x2F;100;
+    int n&#x3D;y%100;
+    if(k&#x3D;&#x3D;n &amp;&amp; m&#x3D;&#x3D;d)&#123;
+        return 1;
+    &#125;
+    return 0;
+&#125;
+</code></pre>]]></content>
       <categories>
         <category>竞赛</category>
       </categories>
@@ -145,13 +584,95 @@
     <content><![CDATA[<p>出于能力和精力问题，有一部分题目暂无题解，见谅</p>
 <h2 id="试题a-卡片"><a class="markdownIt-Anchor" href="#试题a-卡片"></a> 试题A 卡片</h2>
 <p>小蓝有很多数字卡片，每张卡片上都是数字0到9。小蓝准备用这些卡片来拼一些数，他想从1开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从1拼到多少。例如，当小蓝有30张卡片，其中0到9各3张，则小蓝可以拼出1到10,但是拼11时卡片1已经只有一张了，不够拼出11。现在小蓝手里有0到9的卡片各2021张，共20210 张，请问小蓝可以从1拼到多少?</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> list[<span class="hljs-number">10</span>];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (a != <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (list[a % <span class="hljs-number">10</span>] == <span class="hljs-number">0</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        list[a % <span class="hljs-number">10</span>]--;<br>        a /= <span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)<br>    &#123;<br>        list[i] = <span class="hljs-number">2021</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">999999</span>; i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">find</span>(i) == <span class="hljs-number">0</span>)<br>        &#123;<br>            cout &lt;&lt; i - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int list[10];
+int find(int a)
+&#123;
+    while (a !&#x3D; 0)
+    &#123;
+        if (list[a % 10] &#x3D;&#x3D; 0)
+        &#123;
+            return 0;
+        &#125;
+        list[a % 10]--;
+        a &#x2F;&#x3D; 10;
+    &#125;
+    return 1;
+&#125;
+int main()
+&#123;
+    for (int i &#x3D; 0; i &lt; 10; i++)
+    &#123;
+        list[i] &#x3D; 2021;
+    &#125;
+    for (int i &#x3D; 1; i &lt; 999999; i++)
+    &#123;
+        if (find(i) &#x3D;&#x3D; 0)
+        &#123;
+            cout &lt;&lt; i - 1;
+            break;
+        &#125;
+    &#125;
+&#125;</code></pre>
 <h2 id="试题b-直线"><a class="markdownIt-Anchor" href="#试题b-直线"></a> 试题B 直线</h2>
 <p>在平面直角坐标系中，两点可以确定一条直线。如果有多点在一条直线上，那么这些点中任意两点确定的直线是同一条。给定平面上2×3个整点{(x,y)|0≤x&lt;2,0≤y&lt;3,x∈Z,y∈Z}，即横坐标是0到1(包含0和1)之间的整数、纵坐标是О到2(包含О和2)之间的整数的点。这些点一共确定了11条不同的直线。给定平面上20×21个整点{(x,y)[0 ≤x &lt;20,0 ≤ y &lt; 21,x ∈ 'Z,y ∈Z)，即横坐标是О到19(包含0和 19)之间的整数、纵坐标是О到20(包含О和20)之间的整数的点。请问这些点一共确定了多少条不同的直线。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;set&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; PII;<span class="hljs-comment">//二维</span><br><span class="hljs-keyword">typedef</span> pair&lt;PII, <span class="hljs-type">int</span>&gt; PIII;<span class="hljs-comment">//三维</span><br>set&lt;PIII&gt; line;<span class="hljs-comment">//线的参数</span><br>vector&lt;PII&gt; point;<span class="hljs-comment">//点</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span><span class="hljs-comment">//最大公约数</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> a;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">gcd</span>(b, a % b);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">21</span>; j++)<br>            point.<span class="hljs-built_in">push_back</span>(&#123;i, j&#125;);<span class="hljs-comment">//记录点的坐标</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; point.<span class="hljs-built_in">size</span>(); i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; point.<span class="hljs-built_in">size</span>(); j++)<br>        &#123;<br>            <span class="hljs-type">int</span> x1 = point[i].first, y1 = point[i].second;<br>            <span class="hljs-type">int</span> x2 = point[j].first, y2 = point[j].second;<br>            <span class="hljs-type">int</span> A = x2 - x1, B = y1 - y2, C = x1 * y2 - x2 * y1;<br>            <span class="hljs-type">int</span> gcdd = <span class="hljs-built_in">gcd</span>(<span class="hljs-built_in">gcd</span>(A, B), C);<span class="hljs-comment">//约分前的工作</span><br>            line.<span class="hljs-built_in">insert</span>(&#123;&#123;B / gcdd, A / gcdd&#125;, C / gcdd&#125;);<span class="hljs-comment">//记录</span><br>        &#125;<br>    &#125;<br>    cout &lt;&lt; line.<span class="hljs-built_in">size</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+typedef pair&lt;int, int&gt; PII;&#x2F;&#x2F;二维
+typedef pair&lt;PII, int&gt; PIII;&#x2F;&#x2F;三维
+set&lt;PIII&gt; line;&#x2F;&#x2F;线的参数
+vector&lt;PII&gt; point;&#x2F;&#x2F;点
+int gcd(int a, int b)&#x2F;&#x2F;最大公约数
+&#123;
+    if (b &#x3D;&#x3D; 0)
+        return a;
+    return gcd(b, a % b);
+&#125;
+int main()
+&#123;
+    for (int i &#x3D; 0; i &lt; 20; i++)
+        for (int j &#x3D; 0; j &lt; 21; j++)
+            point.push_back(&#123;i, j&#125;);&#x2F;&#x2F;记录点的坐标
+    for (int i &#x3D; 0; i &lt; point.size(); i++)
+    &#123;
+        for (int j &#x3D; i + 1; j &lt; point.size(); j++)
+        &#123;
+            int x1 &#x3D; point[i].first, y1 &#x3D; point[i].second;
+            int x2 &#x3D; point[j].first, y2 &#x3D; point[j].second;
+            int A &#x3D; x2 - x1, B &#x3D; y1 - y2, C &#x3D; x1 * y2 - x2 * y1;
+            int gcdd &#x3D; gcd(gcd(A, B), C);&#x2F;&#x2F;约分前的工作
+            line.insert(&#123;&#123;B &#x2F; gcdd, A &#x2F; gcdd&#125;, C &#x2F; gcdd&#125;);&#x2F;&#x2F;记录
+        &#125;
+    &#125;
+    cout &lt;&lt; line.size();
+&#125;</code></pre>
 <h2 id="试题c-货物摆放"><a class="markdownIt-Anchor" href="#试题c-货物摆放"></a> 试题C 货物摆放</h2>
 <p>小蓝有一个超大的仓库，可以摆放很多货物。现在，小蓝有n箱货物要摆放在仓库，每箱货物都是规则的正方体。小蓝规定了长、宽、高三个互相垂直的方向，每箱货物的边都必须严格平行于长、宽、高。小蓝希望所有的货物最终摆成一个大的长方体。即在长、宽、高的方向上分别堆L、W、H的货物，满足n=L × W x H。给定n，请问有多少种堆放货物的方案满足要求。例如，当n= 4时，有以下6种方案:1x1×4、1×2×2、1×4×1、2x1×2、2×2x1、4x1×1。请问，当n = 2021041820210418（注意有16位数字）时，总共有多少种方案?</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> a = <span class="hljs-number">2021041820210418</span>;<br>    <span class="hljs-type">int</span> i = <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">while</span> (a != <span class="hljs-number">1</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (a % i == <span class="hljs-number">0</span>)<br>        &#123;<br>            a /= i;<br>            cout &lt;&lt; i &lt;&lt;<span class="hljs-string">&#x27; &#x27;</span>;<span class="hljs-comment">//找质因数</span><br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            i++;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+&#123;
+    long long a &#x3D; 2021041820210418;
+    int i &#x3D; 2;
+    while (a !&#x3D; 1)
+    &#123;
+        if (a % i &#x3D;&#x3D; 0)
+        &#123;
+            a &#x2F;&#x3D; i;
+            cout &lt;&lt; i &lt;&lt;&#39; &#39;;&#x2F;&#x2F;找质因数
+        &#125;
+        else
+        &#123;
+            i++;
+        &#125;
+    &#125;
+    return 0;
+&#125;</code></pre>
 <p>2 3 3 3 17 131 2857 5882353<br />
 相当于把这八个数放到3个不同的盒子里，于是有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>3</mn><mn>8</mn></msup></mrow><annotation encoding="application/x-tex">3^8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span>种情况，但是由于有3个数字是重复的，不如先放剩下的5个，再对剩下三个一样的进行讨论</p>
 <table>
@@ -173,15 +694,101 @@
 <p>于是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>+</mo><mn>6</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>∗</mo><msup><mn>3</mn><mn>5</mn></msup><mo>=</mo><mn>2430</mn></mrow><annotation encoding="application/x-tex">(3+6+1)*3^5=2430</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">4</span><span class="mord">3</span><span class="mord">0</span></span></span></span></p>
 <h2 id="试题d-路径"><a class="markdownIt-Anchor" href="#试题d-路径"></a> 试题D 路径</h2>
 <p>小蓝学习了最短路径之后特别高兴，他定义了一个特别的图，希望找到图中的最短路径。小蓝的图由2021个结点组成，依次编号1至2021。对于两个不同的结点a, b，如果a和b的差的绝对值大于21，则两个结点之间没有边相连;如果a和b的差的绝对值小于等于21，则两个点之间有一条长度为a和b的最小公倍数的无向边相连。例如:结点1和结点23之间没有边相连;结点3和结点24之间有一条无向边，长度为24;结点15和结点25之间有一条无向边，长度为75。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> map[<span class="hljs-number">2022</span>][<span class="hljs-number">2022</span>];  <span class="hljs-comment">//保存最短路径</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> <span class="hljs-comment">//最大公约数</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> a;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">gcd</span>(b, a % b);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2021</span>; i++)<span class="hljs-comment">//构建图</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">2021</span>; j++)<br>            <span class="hljs-keyword">if</span> (i == j)<br>                map[i][j] = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(i - j) &gt; <span class="hljs-number">21</span>)<br>                map[i][j] = <span class="hljs-number">1000000000</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(i - j) &lt;= <span class="hljs-number">21</span>)<br>                map[i][j] =(i * j) / <span class="hljs-built_in">gcd</span>(i, j);<br>        <br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> m = <span class="hljs-number">1</span>; m &lt;= <span class="hljs-number">2021</span>; m++)<span class="hljs-comment">//弗洛伊德算法</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">2021</span>; i++)<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">2021</span>; j++)<br>                <span class="hljs-keyword">if</span> (map[i][j] &gt; (map[i][m] + map[m][j]))<br>                    map[i][j] = (map[i][m] + map[m][j]);<br>     <br>    cout &lt;&lt; map[<span class="hljs-number">1</span>][<span class="hljs-number">2021</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int map[2022][2022];  &#x2F;&#x2F;保存最短路径
+int gcd(int a, int b) &#x2F;&#x2F;最大公约数
+&#123;
+    if (b &#x3D;&#x3D; 0)
+        return a;
+    return gcd(b, a % b);
+&#125;
+int main()
+&#123;
+    for (int i &#x3D; 1; i &lt;&#x3D; 2021; i++)&#x2F;&#x2F;构建图
+        for (int j &#x3D; 1; j &lt;&#x3D; 2021; j++)
+            if (i &#x3D;&#x3D; j)
+                map[i][j] &#x3D; 0;
+            else if (abs(i - j) &gt; 21)
+                map[i][j] &#x3D; 1000000000;
+            else if (abs(i - j) &lt;&#x3D; 21)
+                map[i][j] &#x3D;(i * j) &#x2F; gcd(i, j);
+        
+    
+    for (int m &#x3D; 1; m &lt;&#x3D; 2021; m++)&#x2F;&#x2F;弗洛伊德算法
+        for (int i &#x3D; 0; i &lt;&#x3D; 2021; i++)
+            for (int j &#x3D; 0; j &lt;&#x3D; 2021; j++)
+                if (map[i][j] &gt; (map[i][m] + map[m][j]))
+                    map[i][j] &#x3D; (map[i][m] + map[m][j]);
+     
+    cout &lt;&lt; map[1][2021];
+&#125;</code></pre>
 <h2 id="试题e-回路计数"><a class="markdownIt-Anchor" href="#试题e-回路计数"></a> 试题E 回路计数</h2>
 <p>蓝桥学院由 21 栋教学楼组成，教学楼编号 1 到 21。对于两栋教学楼 a 和 b，当 a 和 b 互质时，a 和 b 之间有一条走廊直接相连，两个方向皆可通行，否则没有直接连接的走廊。小蓝现在在第一栋教学楼，他想要访问每栋教学楼正好一次，最终回到第一栋教学楼（即走一条哈密尔顿回路），请问他有多少种不同的访问方案？两个访问方案不同是指存在某个 i，小蓝在两个访问方法中访问完教学楼 i 后访问了不同的教学楼。<br />
 解法：状态压缩动态规划</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">21</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> M = <span class="hljs-number">1</span> &lt;&lt; N; <span class="hljs-comment">// 2^21;</span><br><span class="hljs-type">long</span> <span class="hljs-type">long</span> num[M][N];<span class="hljs-comment">//状态，起点,保存方法的数量</span><br><span class="hljs-type">bool</span> sign[N][N];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> <span class="hljs-comment">//最大公约数</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> a;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">gcd</span>(b, a % b);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">21</span>; i++)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">21</span>; j++)<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">gcd</span>(i, j) == <span class="hljs-number">1</span>)         <span class="hljs-comment">//如果互质</span><br>                sign[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] = <span class="hljs-literal">true</span>; <span class="hljs-comment">//有通道</span><br>    num[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= M - <span class="hljs-number">1</span>; i++)<span class="hljs-comment">//遍历状态</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">20</span>; j++)<span class="hljs-comment">//遍历起点</span><br>            <span class="hljs-keyword">if</span> (i &gt;&gt; j &amp; <span class="hljs-number">1</span>) <span class="hljs-comment">//如果i的第j位为1。这个状态走过这个点</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = <span class="hljs-number">0</span>; k &lt;= <span class="hljs-number">20</span>; k++)<br>                    <span class="hljs-keyword">if</span> (i - (<span class="hljs-number">1</span> &lt;&lt; j) &gt;&gt; k &amp; <span class="hljs-number">1</span> &amp;&amp; sign[k][j]) <span class="hljs-comment">//如果 使i的第j位为0而第k位为1，k和j导通。这个状态是由k走到j得来的。</span><br>                        num[i][j] += num[i - (<span class="hljs-number">1</span> &lt;&lt; j)][k];<span class="hljs-comment">//于是+=由k出发到这个状态的数量</span><br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">20</span>; i++)<span class="hljs-comment">//对所有节点都走过的状态，遍历不同的起点</span><br>        ans += num[M - <span class="hljs-number">1</span>][i];<br>    cout &lt;&lt; ans ;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+const int N &#x3D; 21;
+const int M &#x3D; 1 &lt;&lt; N; &#x2F;&#x2F; 2^21;
+long long num[M][N];&#x2F;&#x2F;状态，起点,保存方法的数量
+bool sign[N][N];
+int gcd(int a, int b) &#x2F;&#x2F;最大公约数
+&#123;
+    if (b &#x3D;&#x3D; 0)
+        return a;
+    return gcd(b, a % b);
+&#125;
+int main()
+&#123;
+    for (int i &#x3D; 1; i &lt;&#x3D; 21; i++)
+        for (int j &#x3D; 1; j &lt;&#x3D; 21; j++)
+            if (gcd(i, j) &#x3D;&#x3D; 1)         &#x2F;&#x2F;如果互质
+                sign[i - 1][j - 1] &#x3D; true; &#x2F;&#x2F;有通道
+    num[1][0] &#x3D; 1;
+    for (int i &#x3D; 1; i &lt;&#x3D; M - 1; i++)&#x2F;&#x2F;遍历状态
+        for (int j &#x3D; 0; j &lt;&#x3D; 20; j++)&#x2F;&#x2F;遍历起点
+            if (i &gt;&gt; j &amp; 1) &#x2F;&#x2F;如果i的第j位为1。这个状态走过这个点
+                for (int k &#x3D; 0; k &lt;&#x3D; 20; k++)
+                    if (i - (1 &lt;&lt; j) &gt;&gt; k &amp; 1 &amp;&amp; sign[k][j]) &#x2F;&#x2F;如果 使i的第j位为0而第k位为1，k和j导通。这个状态是由k走到j得来的。
+                        num[i][j] +&#x3D; num[i - (1 &lt;&lt; j)][k];&#x2F;&#x2F;于是+&#x3D;由k出发到这个状态的数量
+    long long ans &#x3D; 0;
+    for (int i &#x3D; 1; i &lt;&#x3D; 20; i++)&#x2F;&#x2F;对所有节点都走过的状态，遍历不同的起点
+        ans +&#x3D; num[M - 1][i];
+    cout &lt;&lt; ans ;
+&#125;</code></pre>
 <h2 id="试题f-砝码称重"><a class="markdownIt-Anchor" href="#试题f-砝码称重"></a> 试题F 砝码称重</h2>
 <p>你有一架天平和 N 个砝码，这 N 个砝码重量依次是 W1, W2, · · · , WN。 请你计算一共可以称出多少种不同的重量？ 注意砝码可以放在天平两边。<br />
 解法：动态规划，一个一个加入砝码获得的状态。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br>set&lt;<span class="hljs-type">int</span>&gt; w;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br>    <span class="hljs-type">int</span> list[n];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n;i++)<br>    &#123;<br>        cin &gt;&gt; list[i];<br>    &#125;<br>    w.<span class="hljs-built_in">insert</span>(list[<span class="hljs-number">0</span>]);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n;i++)<br>    &#123;<br>        <span class="hljs-type">int</span> cache[<span class="hljs-number">200</span>],p=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = w.<span class="hljs-built_in">begin</span>(); it != w.<span class="hljs-built_in">end</span>();it++)<br>        &#123;<br>                cache[p++] = <span class="hljs-built_in">abs</span>(*it + list[i]);<br>                cache[p++] = <span class="hljs-built_in">abs</span>(*it - list[i]);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; p;j++)<br>        &#123;<br>            w.<span class="hljs-built_in">insert</span>(cache[j]);<br>        &#125;<br>        w.<span class="hljs-built_in">insert</span>(list[i]);<br>    &#125;<br>    cout &lt;&lt; w.<span class="hljs-built_in">size</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;set&gt;
+using namespace std;
+set&lt;int&gt; w;
+int main()
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    int list[n];
+    for (int i &#x3D; 0; i &lt; n;i++)
+    &#123;
+        cin &gt;&gt; list[i];
+    &#125;
+    w.insert(list[0]);
+    for (int i &#x3D; 1; i &lt; n;i++)
+    &#123;
+        int cache[200],p&#x3D;0;
+        for (auto it &#x3D; w.begin(); it !&#x3D; w.end();it++)
+        &#123;
+                cache[p++] &#x3D; abs(*it + list[i]);
+                cache[p++] &#x3D; abs(*it - list[i]);
+        &#125;
+        for (int j &#x3D; 0; j &lt; p;j++)
+        &#123;
+            w.insert(cache[j]);
+        &#125;
+        w.insert(list[i]);
+    &#125;
+    cout &lt;&lt; w.size();
+&#125;</code></pre>
 <h2 id="异或数列"><a class="markdownIt-Anchor" href="#异或数列"></a> 异或数列</h2>
 <p>Alice 和 Bob 正在玩一个异或数列的游戏。初始时，Alice 和 Bob 分别有一个整数 a 和 b，有一个给定的长度为 n 的公共数列 X1, X2, · · · , Xn。<br />
 Alice 和 Bob 轮流操作，Alice 先手，每步可以在以下两种选项中选一种：<br />
@@ -190,7 +797,72 @@ Alice 和 Bob 轮流操作，Alice 先手，每步可以在以下两种选项中
 每个数 Xi 都只能用一次，当所有 Xi 均被使用后（n 轮后）游戏结束。游戏结束时，拥有的数比较大的一方获胜，如果双方数值相同，即为平手。<br />
 现在双方都足够聪明，都采用最优策略，请问谁能获胜？</p>
 <p>要不直接模拟。。。。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">2e5</span> + <span class="hljs-number">5</span>;<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> w[N];<br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> cnt[<span class="hljs-number">25</span>];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">op</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> t = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (x)<br>    &#123;<br>        t++;<br>        <span class="hljs-keyword">if</span> (x &amp; <span class="hljs-number">1</span>)<br>            cnt[t]++;<br>        x &gt;&gt;= <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">memset</span>(cnt, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> cnt);<br>    <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>        <span class="hljs-built_in">op</span>(w[i]), sum ^= w[i];<br>    <span class="hljs-keyword">if</span> (!sum)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">20</span>; i &gt; <span class="hljs-number">0</span>; i--)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (cnt[i] == <span class="hljs-number">1</span>)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-number">1</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (cnt[i] &amp; <span class="hljs-number">1</span>)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (n &amp; <span class="hljs-number">1</span>)<br>            &#123;<br>                cout &lt;&lt; <span class="hljs-number">1</span> &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                cout &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; endl;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> t;<br>    cin &gt;&gt; t;<br>    <span class="hljs-keyword">while</span> (t--)<br>    &#123;<br>        cin &gt;&gt; n;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>        &#123;<br>            cin &gt;&gt; w[i];<br>        &#125;<br>        <span class="hljs-built_in">solve</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int N &#x3D; 2e5 + 5;
+long long w[N];
+int n;
+int cnt[25];
+
+void op(long long x)
+&#123;
+    int t &#x3D; 0;
+    while (x)
+    &#123;
+        t++;
+        if (x &amp; 1)
+            cnt[t]++;
+        x &gt;&gt;&#x3D; 1;
+    &#125;
+&#125;
+void solve()
+&#123;
+    memset(cnt, 0, sizeof cnt);
+    int sum &#x3D; 0;
+    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)
+        op(w[i]), sum ^&#x3D; w[i];
+    if (!sum)
+    &#123;
+        cout &lt;&lt; 0 &lt;&lt; endl;
+        return;
+    &#125;
+    for (int i &#x3D; 20; i &gt; 0; i--)
+    &#123;
+        if (cnt[i] &#x3D;&#x3D; 1)
+        &#123;
+            cout &lt;&lt; 1 &lt;&lt; endl;
+            return;
+        &#125;
+        if (cnt[i] &amp; 1)
+        &#123;
+            if (n &amp; 1)
+            &#123;
+                cout &lt;&lt; 1 &lt;&lt; endl;
+                return;
+            &#125;
+            else
+            &#123;
+                cout &lt;&lt; -1 &lt;&lt; endl;
+                break;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+int main()
+&#123;
+    int t;
+    cin &gt;&gt; t;
+    while (t--)
+    &#123;
+        cin &gt;&gt; n;
+        for (int i &#x3D; 1; i &lt;&#x3D; n; i++)
+        &#123;
+            cin &gt;&gt; w[i];
+        &#125;
+        solve();
+    &#125;
+&#125;</code></pre>]]></content>
       <categories>
         <category>竞赛</category>
       </categories>
