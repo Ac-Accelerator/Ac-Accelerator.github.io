@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ac-accelerator.github.io/post/Untitled.html</loc>
+    
+    <lastmod>2022-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ac-accelerator.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95.html</loc>
     
     <lastmod>2022-03-03</lastmod>
@@ -137,6 +146,20 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://ac-accelerator.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2022-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/tags/CSS/</loc>
+    <lastmod>2022-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -148,6 +171,13 @@
   
   <url>
     <loc>https://ac-accelerator.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2022-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2022-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

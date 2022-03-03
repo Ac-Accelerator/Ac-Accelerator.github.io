@@ -616,11 +616,11 @@ pre[class*=language-] {
 }
 
 .token.number {
-    color: #57a748
+    color: #b3d821
 }
 
 .token.operator {
-    color: #ffffffb0;
+    color: #cf4cd8;
     background: transparent
 }
 

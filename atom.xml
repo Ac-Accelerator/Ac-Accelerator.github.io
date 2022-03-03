@@ -6,7 +6,7 @@
   <link href="https://ac-accelerator.github.io/atom.xml" rel="self"/>
   
   <link href="https://ac-accelerator.github.io/"/>
-  <updated>2022-03-03T11:37:09.130Z</updated>
+  <updated>2022-03-03T19:00:11.470Z</updated>
   <id>https://ac-accelerator.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于Aurora主题代码高亮的问题</title>
+    <link href="https://ac-accelerator.github.io/post/Untitled.html"/>
+    <id>https://ac-accelerator.github.io/post/Untitled.html</id>
+    <published>2022-03-03T11:28:00.000Z</published>
+    <updated>2022-03-03T19:00:11.470Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="起因"><a class="markdownIt-Anchor" href="#起因"></a> 起因</h2><p>这几天兴致勃勃的搞了一个博客，换了几款主题，最后还是选定了极富科技感的Aurora主题。按照官方文档，折腾配置了很久，终于能够使用了。可是<strong>最最最最最</strong>蛋疼的就是这个代码块的语法高亮。我本人是C++语言的代码（不知道其他语言表现得怎么样），括号颜色极淡，其他的代码颜色也很单一，这就使我很难受。我在官方文档里找不到如何调节这种语法高亮，甚至我把prismjs的文档也看了一遍。还是fail了。</p><h2 id="发现问题"><a class="markdownIt-Anchor" href="#发现问题"></a> 发现问题</h2><p>可能是源于我前端知识的不足，我过了好久才想明白，任何网页上的元素都可以通过浏览器的F12进行查看和调试。<br />到最后，我通过浏览器的调试功能（F12）找到了根源：<strong>post.9f951a60.css</strong></p><h2 id="解决问题"><a class="markdownIt-Anchor" href="#解决问题"></a> 解决问题</h2><p>使用win自带的文件查找功能，在目录\node_modules\hexo-theme-aurora\source\static\css下成功找到此文件。进去一看，乖乖，密密麻麻写的什么玩意儿。介于vscode是我的主力编辑器，我在安装了JS-CSS-HTML Formatter<br />插件后<kbd>Ctrl</kbd> + <kbd>Alt</kbd>+<kbd>F</kbd>成功格式化CSS代码，这看上去不清晰得多？</p><h3 id="修改案例"><a class="markdownIt-Anchor" href="#修改案例"></a> 修改案例</h3><img src=\img\p1.png>找到目标！！  <kbd>Ctrl</kbd>+<kbd>F</kbd>搜索这个，<pre class="line-numbers language-css" data-language="css"><code class="language-css">.language-markup .token.punctuation<span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>你就可以看到一个：<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.language-css .token.punctuation,.language-html .token.punctuation,.language-markup .token.punctuation,.token.punctuation</span> <span class="token punctuation">&#123;</span>    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--subs<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>这个 var(--subs)就是造成你括号暗淡的罪魁祸首。#### 法一：你可以搜索`:root`,并到--subs这里进行修改。#### 法二：直接吧`var(--subs)`修改为其他颜色如`#33ff00`。### 关于其他问题都可以通过浏览器的F12功能来找到问题，然后对应修改]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#起因&quot;&gt;&lt;/a&gt; 起因&lt;/h2&gt;
+&lt;p&gt;这几天兴致勃勃的搞了一个博客，换了几款主题，最后还是选定了极富科技感的Aurora主题。按照官方文档，折腾配置了很久，终于能够使用了。可是&lt;st</summary>
+      
+    
+    
+    
+    <category term="前端" scheme="https://ac-accelerator.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="前端" scheme="https://ac-accelerator.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="CSS" scheme="https://ac-accelerator.github.io/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>字符串匹配算法</title>

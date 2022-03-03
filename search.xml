@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于Aurora主题代码高亮的问题</title>
+    <url>//post/Untitled.html</url>
+    <content><![CDATA[<h2 id="起因"><a class="markdownIt-Anchor" href="#起因"></a> 起因</h2>
+<p>这几天兴致勃勃的搞了一个博客，换了几款主题，最后还是选定了极富科技感的Aurora主题。按照官方文档，折腾配置了很久，终于能够使用了。可是<strong>最最最最最</strong>蛋疼的就是这个代码块的语法高亮。我本人是C++语言的代码（不知道其他语言表现得怎么样），括号颜色极淡，其他的代码颜色也很单一，这就使我很难受。我在官方文档里找不到如何调节这种语法高亮，甚至我把prismjs的文档也看了一遍。还是fail了。</p>
+<h2 id="发现问题"><a class="markdownIt-Anchor" href="#发现问题"></a> 发现问题</h2>
+<p>可能是源于我前端知识的不足，我过了好久才想明白，任何网页上的元素都可以通过浏览器的F12进行查看和调试。<br />
+到最后，我通过浏览器的调试功能（F12）找到了根源：<strong>post.9f951a60.css</strong></p>
+<h2 id="解决问题"><a class="markdownIt-Anchor" href="#解决问题"></a> 解决问题</h2>
+<p>使用win自带的文件查找功能，在目录\node_modules\hexo-theme-aurora\source\static\css下成功找到此文件。进去一看，乖乖，密密麻麻写的什么玩意儿。介于vscode是我的主力编辑器，我在安装了JS-CSS-HTML Formatter<br />
+插件后<kbd>Ctrl</kbd> + <kbd>Alt</kbd>+<kbd>F</kbd>成功格式化CSS代码，这看上去不清晰得多？</p>
+<h3 id="修改案例"><a class="markdownIt-Anchor" href="#修改案例"></a> 修改案例</h3>
+<img src=\img\p1.png>
+找到目标！！  
+<kbd>Ctrl</kbd>+<kbd>F</kbd>搜索这个，
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">.language-markup .token.punctuation<span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+你就可以看到一个：
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.language-css .token.punctuation,
+.language-html .token.punctuation,
+.language-markup .token.punctuation,
+.token.punctuation</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--subs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+这个 var(--subs)就是造成你括号暗淡的罪魁祸首。
+#### 法一：
+你可以搜索`:root`,并到--subs这里进行修改。
+#### 法二：
+直接吧`var(--subs)`修改为其他颜色如`#33ff00`。
+### 关于其他问题
+都可以通过浏览器的F12功能来找到问题，然后对应修改
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字符串匹配算法</title>
     <url>//post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95.html</url>
     <content><![CDATA[<h2 id="1暴力匹配"><a class="markdownIt-Anchor" href="#1暴力匹配"></a> 1.暴力匹配：</h2>
