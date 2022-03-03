@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>关于Aurora主题代码高亮的问题</title>
-    <url>//post/Untitled.html</url>
+    <url>//post/%E5%85%B3%E4%BA%8EAurora%E4%B8%BB%E9%A2%98%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E7%9A%84%E9%97%AE%E9%A2%98.html</url>
     <content><![CDATA[<h2 id="起因"><a class="markdownIt-Anchor" href="#起因"></a> 起因</h2>
 <p>这几天兴致勃勃的搞了一个博客，换了几款主题，最后还是选定了极富科技感的Aurora主题。按照官方文档，折腾配置了很久，终于能够使用了。可是<strong>最最最最最</strong>蛋疼的就是这个代码块的语法高亮。我本人是C++语言的代码（不知道其他语言表现得怎么样），括号颜色极淡，其他的代码颜色也很单一，这就使我很难受。我在官方文档里找不到如何调节这种语法高亮，甚至我把prismjs的文档也看了一遍。还是fail了。</p>
 <h2 id="发现问题"><a class="markdownIt-Anchor" href="#发现问题"></a> 发现问题</h2>
@@ -24,12 +24,12 @@
     <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--subs<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 这个 var(--subs)就是造成你括号暗淡的罪魁祸首。
-#### 法一：
-你可以搜索`:root`,并到--subs这里进行修改。
-#### 法二：
-直接吧`var(--subs)`修改为其他颜色如`#33ff00`。
-### 关于其他问题
-都可以通过浏览器的F12功能来找到问题，然后对应修改
+<h4 id="法一"><a class="markdownIt-Anchor" href="#法一"></a> 法一：</h4>
+<p>你可以搜索<code>:root</code>,并到–subs这里进行修改。</p>
+<h4 id="法二"><a class="markdownIt-Anchor" href="#法二"></a> 法二：</h4>
+<p>直接吧<code>var(--subs)</code>修改为其他颜色如<code>#33ff00</code>。</p>
+<h3 id="关于其他问题"><a class="markdownIt-Anchor" href="#关于其他问题"></a> 关于其他问题</h3>
+<p>都可以通过浏览器的F12功能来找到问题，然后对应修改</p>
 ]]></content>
       <categories>
         <category>前端</category>
@@ -117,23 +117,6 @@ int Sunday(string &amp;origin, int &amp;ol, string &amp;target, int &amp;tl)
         <tag>C++</tag>
         <tag>字符串</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>我的第一篇博客</title>
-    <url>//post/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-1.html</url>
-    <content><![CDATA[<h2 id="博客的开始"><a class="markdownIt-Anchor" href="#博客的开始"></a> 博客的开始</h2>
-<p>经过了一天的<s>努力</s>，我参照了很多帖子，终于在github平台上搭建起了自己的博客。以后我会尝试在这上面分享我的生活和学习。包括很多的<strong>算法</strong>和<strong>计算机</strong>知识也会在这里分享。由于本人才疏学浅，所理解的知识难免存在不够好的地方，欢迎指正和交流！</p>
-<h2 id="写博客的理由"><a class="markdownIt-Anchor" href="#写博客的理由"></a> 写博客的理由</h2>
-<p>在我初学计算机的时候，我曾经也是个P都不懂的小白。经常进行各种傻逼操作，我和我的电脑都累坏了。<br />
-<img src=http://www.mcrchina.com/uploads/allimg/202010/05/20173131044176031.jpg><br />
-看了很多大佬的博客还有帖子，我才找到正确的路。<s>于是，我也想成为学弟学妹的领路人</s>。总之就是这种情况。<br />
-还有就是我其实是一个非常健忘的people。所以我想把我学到的算法，学到的知识记录下来，管他有没有人看，我自己看。在浏览器里看总比在doc里面看养眼多了吧。</p>
-<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
-<p>加油，先更他个一百篇！</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
   </entry>
   <entry>
     <title>第十一届蓝桥杯省赛C++ A组题解</title>
@@ -910,5 +893,22 @@ int main()
         <tag>C++</tag>
         <tag>蓝桥杯</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>我的第一篇博客</title>
+    <url>//post/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-1.html</url>
+    <content><![CDATA[<h2 id="博客的开始"><a class="markdownIt-Anchor" href="#博客的开始"></a> 博客的开始</h2>
+<p>经过了一天的<s>努力</s>，我参照了很多帖子，终于在github平台上搭建起了自己的博客。以后我会尝试在这上面分享我的生活和学习。包括很多的<strong>算法</strong>和<strong>计算机</strong>知识也会在这里分享。由于本人才疏学浅，所理解的知识难免存在不够好的地方，欢迎指正和交流！</p>
+<h2 id="写博客的理由"><a class="markdownIt-Anchor" href="#写博客的理由"></a> 写博客的理由</h2>
+<p>在我初学计算机的时候，我曾经也是个P都不懂的小白。经常进行各种傻逼操作，我和我的电脑都累坏了。<br />
+<img src=http://www.mcrchina.com/uploads/allimg/202010/05/20173131044176031.jpg><br />
+看了很多大佬的博客还有帖子，我才找到正确的路。<s>于是，我也想成为学弟学妹的领路人</s>。总之就是这种情况。<br />
+还有就是我其实是一个非常健忘的people。所以我想把我学到的算法，学到的知识记录下来，管他有没有人看，我自己看。在浏览器里看总比在doc里面看养眼多了吧。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>加油，先更他个一百篇！</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
   </entry>
 </search>
