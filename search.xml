@@ -40,85 +40,6 @@
       </tags>
   </entry>
   <entry>
-    <title>字符串匹配算法</title>
-    <url>//post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95.html</url>
-    <content><![CDATA[<h2 id="1暴力匹配"><a class="markdownIt-Anchor" href="#1暴力匹配"></a> 1.暴力匹配：</h2>
-<p>设三个指针，第一个用来指向原字符串，表示当前位置。剩下两个分别用来指向当前正在进行匹配的字符。  <br />
-这是最简单的字符串匹配，其效率比较低，在算法竞赛中最好不要使用。</p>
-<h2 id="2kmp算法"><a class="markdownIt-Anchor" href="#2kmp算法"></a> 2.KMP算法：</h2>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void get_Next(string target, int tl, int *Next) &#x2F;&#x2F;求出Next数组
-&#123;                                               &#x2F;&#x2F;Next数组是从 target[0到i-1]前子串 的前缀后缀最大值
-    int point1 &#x3D; 0, point2;
-    Next[0] &#x3D; point2 &#x3D; -1;                                    &#x2F;&#x2F;next数组首位默认为-1
-    while (point1 &lt; tl)                                       &#x2F;&#x2F;边界条件
-        if (point2 &#x3D;&#x3D; -1 || target[point1] &#x3D;&#x3D; target[point2]) &#x2F;&#x2F;类似于KMP的匹配
-            Next[++point1] &#x3D; ++point2;
-        else
-            point2 &#x3D; Next[point2]; &#x2F;&#x2F;失配
-&#125;
-int KMP(string origin, string target, int ol, int tl)&#x2F;&#x2F;返回匹配条数的函数
-&#123;
-    int Next[tl], sum &#x3D; 0;
-    get_Next(target, tl, Next); &#x2F;&#x2F;获得next数组
-    int point1 &#x3D; 0, point2 &#x3D; 0; &#x2F;&#x2F;从0位开始匹配
-    while (point1 &lt; ol)         &#x2F;&#x2F;临界值
-    &#123;
-        if (point2 &#x3D;&#x3D; -1 || origin[point1] &#x3D;&#x3D; target[point2]) &#x2F;&#x2F;相应字符匹配成功，继续
-            point1++, point2++;
-        else
-            point2 &#x3D; Next[point2]; &#x2F;&#x2F;失配
-        if (point2 &#x3D;&#x3D; tl)
-            sum++, point2 &#x3D; Next[point2]; &#x2F;&#x2F;point2&#x3D;&#x3D;tl时，全字符串匹配成功，sum+1，point2置为Next[point2]继续开始新一轮匹配
-    &#125;
-    return sum; &#x2F;&#x2F;返回
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="sunday算法"><a class="markdownIt-Anchor" href="#sunday算法"></a> Sunday算法：</h2>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void GetNext(string &amp;p, int &amp;ot, int *Next, unsigned long long sizes) &#x2F;&#x2F;标记各个字符所在的最大位置
-&#123;
-    memset(Next, 0, sizes);
-    for (int i &#x3D; 1; i &lt;&#x3D; ot; i++) &#x2F;&#x2F;标记
-        Next[int(p[i - 1])] &#x3D; i;
-&#125;
-int Sunday(string &amp;origin, int &amp;ol, string &amp;target, int &amp;tl)
-&#123;
-    int Next[MAX_CHAR], &#x2F;&#x2F;声明next数组，用于存放字符位移量
-        sum &#x3D; 0;        &#x2F;&#x2F;匹配的数量
-    unsigned long long sizes &#x3D; sizeof(Next);
-    GetNext(target, tl, Next, sizes);
-
-    int j, k; &#x2F;&#x2F; origin 的下标 . target 的下标
-    int i &#x3D; 0;
-    while (i &lt;&#x3D; ol - tl) &#x2F;&#x2F;走到尾部退出循环
-    &#123;
-        j &#x3D; i, k &#x3D; 0;                                      &#x2F;&#x2F; origin的下标指向最新的位置，target的下标重置，指向首位
-        while (j &lt; ol &amp;&amp; k &lt; tl &amp;&amp; origin[j] &#x3D;&#x3D; target[k]) &#x2F;&#x2F;如果相同，且未越界，则进行下一个字符的比对
-            j++, k++;
-
-        if (k &#x3D;&#x3D; tl) &#x2F;&#x2F;如果比对成功，则有k&#x3D; target的长度，可进行操作
-        &#123;
-            sum++;
-        &#125;
-        if (i + tl &lt; ol)                               &#x2F;&#x2F;如果在范围内，则重新将i定义为
-            i +&#x3D; (tl - Next[int(origin[i + tl])] + 1); &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;****算法核心****&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
-        &#x2F;*  origin[i+tl]  指的是原字符串下一个字符，next[]是储存该字符位移量的数组。
-            如果target里有该字符，则进行指定长度的位移，没有则位移 (target的长度 +1)   *&#x2F;
-        else
-            break; &#x2F;&#x2F;优化
-    &#125;
-    return sum;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>上述两种算法都是比较快速的算法，都是通过初始化Next数组，来实现对比位置的快速跳转。其中KMP属于时间复杂度稳定的算法，在ACM竞赛中经常使用，由此来避免特殊的字符串。而Sunday算法属于时间复杂度不稳定的算法，偏向实用，在实际工程中的效率KMP算法高。</p>
-]]></content>
-      <categories>
-        <category>竞赛</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>C++</tag>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图的相关算法</title>
     <url>//post/%E5%9B%BE%E7%9A%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.html</url>
     <content><![CDATA[<p>打算把图的相关算法都复习记录一遍。以相关题目为主，代码并非最优解。</p>
@@ -895,10 +816,20 @@ bool dfs(city a[], int start, int end)&#x2F;&#x2F;传入保存城市的数组，
         <category>竞赛</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>C++</tag>
+        <tag>算法</tag>
         <tag>图论</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>大学生讲思政课的作品</title>
+    <url>//post/%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AE%B2%E6%80%9D%E6%94%BF%E8%AF%BE%E7%9A%84%E4%BD%9C%E5%93%81.html</url>
+    <content><![CDATA[<p>这个是大一上学期思政课我们小组的作品。已经成为某人的黑历史了。PPT做的后期动画，加上廉价的抠像。。。真让人感慨往事不堪回首。</p>
+<iframe src="//player.bilibili.com/player.html?aid=549342165&bvid=BV1Fq4y1g7vC&cid=446409431&page=1" scrolling="yes" border="1" frameborder="yes" framespacing="1" allowfullscreen="true" height="281" width="500"> </iframe> 
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
   </entry>
   <entry>
     <title>我的第一篇博客</title>
@@ -916,6 +847,85 @@ bool dfs(city a[], int start, int end)&#x2F;&#x2F;传入保存城市的数组，
       <categories>
         <category>生活</category>
       </categories>
+  </entry>
+  <entry>
+    <title>字符串匹配算法</title>
+    <url>//post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95.html</url>
+    <content><![CDATA[<h2 id="1暴力匹配"><a class="markdownIt-Anchor" href="#1暴力匹配"></a> 1.暴力匹配：</h2>
+<p>设三个指针，第一个用来指向原字符串，表示当前位置。剩下两个分别用来指向当前正在进行匹配的字符。  <br />
+这是最简单的字符串匹配，其效率比较低，在算法竞赛中最好不要使用。</p>
+<h2 id="2kmp算法"><a class="markdownIt-Anchor" href="#2kmp算法"></a> 2.KMP算法：</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void get_Next(string target, int tl, int *Next) &#x2F;&#x2F;求出Next数组
+&#123;                                               &#x2F;&#x2F;Next数组是从 target[0到i-1]前子串 的前缀后缀最大值
+    int point1 &#x3D; 0, point2;
+    Next[0] &#x3D; point2 &#x3D; -1;                                    &#x2F;&#x2F;next数组首位默认为-1
+    while (point1 &lt; tl)                                       &#x2F;&#x2F;边界条件
+        if (point2 &#x3D;&#x3D; -1 || target[point1] &#x3D;&#x3D; target[point2]) &#x2F;&#x2F;类似于KMP的匹配
+            Next[++point1] &#x3D; ++point2;
+        else
+            point2 &#x3D; Next[point2]; &#x2F;&#x2F;失配
+&#125;
+int KMP(string origin, string target, int ol, int tl)&#x2F;&#x2F;返回匹配条数的函数
+&#123;
+    int Next[tl], sum &#x3D; 0;
+    get_Next(target, tl, Next); &#x2F;&#x2F;获得next数组
+    int point1 &#x3D; 0, point2 &#x3D; 0; &#x2F;&#x2F;从0位开始匹配
+    while (point1 &lt; ol)         &#x2F;&#x2F;临界值
+    &#123;
+        if (point2 &#x3D;&#x3D; -1 || origin[point1] &#x3D;&#x3D; target[point2]) &#x2F;&#x2F;相应字符匹配成功，继续
+            point1++, point2++;
+        else
+            point2 &#x3D; Next[point2]; &#x2F;&#x2F;失配
+        if (point2 &#x3D;&#x3D; tl)
+            sum++, point2 &#x3D; Next[point2]; &#x2F;&#x2F;point2&#x3D;&#x3D;tl时，全字符串匹配成功，sum+1，point2置为Next[point2]继续开始新一轮匹配
+    &#125;
+    return sum; &#x2F;&#x2F;返回
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="sunday算法"><a class="markdownIt-Anchor" href="#sunday算法"></a> Sunday算法：</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void GetNext(string &amp;p, int &amp;ot, int *Next, unsigned long long sizes) &#x2F;&#x2F;标记各个字符所在的最大位置
+&#123;
+    memset(Next, 0, sizes);
+    for (int i &#x3D; 1; i &lt;&#x3D; ot; i++) &#x2F;&#x2F;标记
+        Next[int(p[i - 1])] &#x3D; i;
+&#125;
+int Sunday(string &amp;origin, int &amp;ol, string &amp;target, int &amp;tl)
+&#123;
+    int Next[MAX_CHAR], &#x2F;&#x2F;声明next数组，用于存放字符位移量
+        sum &#x3D; 0;        &#x2F;&#x2F;匹配的数量
+    unsigned long long sizes &#x3D; sizeof(Next);
+    GetNext(target, tl, Next, sizes);
+
+    int j, k; &#x2F;&#x2F; origin 的下标 . target 的下标
+    int i &#x3D; 0;
+    while (i &lt;&#x3D; ol - tl) &#x2F;&#x2F;走到尾部退出循环
+    &#123;
+        j &#x3D; i, k &#x3D; 0;                                      &#x2F;&#x2F; origin的下标指向最新的位置，target的下标重置，指向首位
+        while (j &lt; ol &amp;&amp; k &lt; tl &amp;&amp; origin[j] &#x3D;&#x3D; target[k]) &#x2F;&#x2F;如果相同，且未越界，则进行下一个字符的比对
+            j++, k++;
+
+        if (k &#x3D;&#x3D; tl) &#x2F;&#x2F;如果比对成功，则有k&#x3D; target的长度，可进行操作
+        &#123;
+            sum++;
+        &#125;
+        if (i + tl &lt; ol)                               &#x2F;&#x2F;如果在范围内，则重新将i定义为
+            i +&#x3D; (tl - Next[int(origin[i + tl])] + 1); &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;****算法核心****&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
+        &#x2F;*  origin[i+tl]  指的是原字符串下一个字符，next[]是储存该字符位移量的数组。
+            如果target里有该字符，则进行指定长度的位移，没有则位移 (target的长度 +1)   *&#x2F;
+        else
+            break; &#x2F;&#x2F;优化
+    &#125;
+    return sum;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述两种算法都是比较快速的算法，都是通过初始化Next数组，来实现对比位置的快速跳转。其中KMP属于时间复杂度稳定的算法，在ACM竞赛中经常使用，由此来避免特殊的字符串。而Sunday算法属于时间复杂度不稳定的算法，偏向实用，在实际工程中的效率KMP算法高。</p>
+]]></content>
+      <categories>
+        <category>竞赛</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+      </tags>
   </entry>
   <entry>
     <title>第十二届蓝桥杯省赛C++ A组题解</title>
@@ -1206,8 +1216,8 @@ int main()
         <category>竞赛</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>C++</tag>
+        <tag>算法</tag>
         <tag>蓝桥杯</tag>
       </tags>
   </entry>
@@ -1381,8 +1391,8 @@ int main()
         <category>竞赛</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>C++</tag>
+        <tag>算法</tag>
         <tag>蓝桥杯</tag>
       </tags>
   </entry>
@@ -1688,8 +1698,8 @@ bool isab(int x)&#123;
         <category>竞赛</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>C++</tag>
+        <tag>算法</tag>
         <tag>蓝桥杯</tag>
       </tags>
   </entry>
