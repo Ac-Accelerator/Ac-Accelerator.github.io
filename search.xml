@@ -43,8 +43,7 @@
     <title>大学生讲思政课的作品</title>
     <url>//post/%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AE%B2%E6%80%9D%E6%94%BF%E8%AF%BE%E7%9A%84%E4%BD%9C%E5%93%81.html</url>
     <content><![CDATA[<p>这个是大一上学期思政课我们小组的作品。已经成为某人的黑历史了。PPT做的后期动画，加上廉价的抠像。。。真让人感慨往事不堪回首。</p>
-<iframe src="//player.bilibili.com/player.html?aid=549342165&bvid=BV1Fq4y1g7vC&cid=446409431&page=1" scrolling="yes" border="1" frameborder="yes" framespacing="1" allowfullscreen="true" height="281" width="500"> </iframe> 
-]]></content>
+<iframe src="//player.bilibili.com/player.html?aid=549342165&bvid=BV1Fq4y1g7vC&cid=446409431&page=1" scrolling="yes" border="1" frameborder="yes" framespacing="1" allowfullscreen="true"> </iframe>]]></content>
       <categories>
         <category>生活</category>
       </categories>
@@ -448,7 +447,7 @@ main()
 <p><strong>输出样例:</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">0--&gt;1--&gt;3--&gt;6--&gt;8:13<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这里献上B站UP 从0开始数 的算法视频！</p>
-<iframe src="//player.bilibili.com/player.html?aid=586430293&bvid=BV1zz4y1m7Nq&cid=289260026&page=1" scrolling="yes" border="1" frameborder="yes" framespacing="1" allowfullscreen="true" width="500" height="281" > </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=586430293&bvid=BV1zz4y1m7Nq&cid=289260026&page=1" scrolling="yes" border="1" frameborder="yes" framespacing="1" allowfullscreen="true" > </iframe>
 <p><strong>代码:</strong></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 #include &lt;map&gt;
