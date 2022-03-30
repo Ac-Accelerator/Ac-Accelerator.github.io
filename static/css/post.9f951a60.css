@@ -237,7 +237,8 @@
     --purple: #893cf5;
     --red: #ff5882;
     --yellow: #f1e75d;
-    --subs: #3f4144;
+    /* --subs: #3f4144; */
+    --subs: #D4D4D4;
     --background-30: rgba(40, 42, 54, 0.2);
     --comment-30: rgba(98, 114, 164, 0.2);
     --foreground-30: rgba(248, 248, 242, 0.2);
