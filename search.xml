@@ -3670,11 +3670,10 @@ bool isab(int x)&#123;
 按拓扑结构分：总线型、星型、环形、网状型（常用于广域网）<br />
 按传输技术分：广播式网络（共享公共通信通道）、点对点网络（使用分组存储转发和路由选择机制）</p>
 <h3 id="速率相关性能指标"><a class="markdownIt-Anchor" href="#速率相关性能指标"></a> 速率相关性能指标</h3>
-<p><strong>速率</strong>即数据率或称数据传输率或比特率。<br />
-连接在计算机网络上的主机在数字信道上<strong>传送数据位数的速率</strong>。单位是b/s，kb/s，Mb/s，Gb/s，Tb/s。单位之间是以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">10^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>进行换算。（注意区分描述数据存储时使用的KB、MB、GB、TB，它们之间是以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>1</mn></msup><mn>0</mn></mrow><annotation encoding="application/x-tex">2^10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mord">0</span></span></span></span>进行换算）</p>
-<p>计算机网络中，带宽用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的“最高数据率”。单位是“比特每秒”，b/s，kb/s，Mb/s，Gb/s。<br />
-<strong>网络设备所支持的最高速度</strong></p>
-<p>吞吐量表示在<strong>单位时间</strong>内通过**某个网络（或信道、接口）**的数据量。单位b/s，kb/s，Mb/s等。吞吐量受网络的带宽或网络的额定速率的限制。</p>
+<p><em>速率</em>即数据率或称数据传输率或比特率。<br />
+连接在计算机网络上的主机在数字信道上<strong>传送数据位数的速率</strong>。单位是b/s，kb/s，Mb/s，Gb/s，Tb/s。单位之间是以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">10^{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>进行换算。（注意区分描述数据存储时使用的KB、MB、GB、TB，它们之间是以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">2^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span>进行换算）</p>
+<p><em>带宽</em>用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的“最高数据率”。单位是“比特每秒”，b/s，kb/s，Mb/s，Gb/s。<strong>网络设备所支持的最高速度</strong></p>
+<p><em>吞吐量</em>表示在<strong>单位时间</strong>内通过<strong>某个网络或信道、接口</strong>的数据量。单位b/s，kb/s，Mb/s等。吞吐量受网络的带宽或网络的额定速率的限制。</p>
 <h3 id="时延-时延带宽积-rtt和利用率"><a class="markdownIt-Anchor" href="#时延-时延带宽积-rtt和利用率"></a> 时延、时延带宽积、RTT和利用率</h3>
 <p><strong>时延：</strong><br />
 <strong>发送时延(传输时延)</strong>：从发送分组的第一个比特算起，到该分组的最后一个比特发送完毕所需的时间。（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">数</mi><mi mathvariant="normal">据</mi><mi mathvariant="normal">大</mi><mi mathvariant="normal">小</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">信</mi><mi mathvariant="normal">道</mi><mi mathvariant="normal">带</mi><mi mathvariant="normal">宽</mi></mrow><annotation encoding="application/x-tex">数据大小/信道带宽</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">据</span><span class="mord cjk_fallback">大</span><span class="mord cjk_fallback">小</span><span class="mord">/</span><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">道</span><span class="mord cjk_fallback">带</span><span class="mord cjk_fallback">宽</span></span></span></span>）<br />
@@ -3685,6 +3684,7 @@ bool isab(int x)&#123;
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">传</mi><mi mathvariant="normal">播</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">延</mi><mo>∗</mo><mi mathvariant="normal">带</mi><mi mathvariant="normal">宽</mi></mrow><annotation encoding="application/x-tex">传播时延*带宽</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">播</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">延</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">带</span><span class="mord cjk_fallback">宽</span></span></span></span></p>
 <p><strong>往返时间RTT</strong>:从发送方发送数据开始，到发送方收到接收方的确认（接收方收到数据后立即发送确认)总共经历的时延。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">往</mi><mi mathvariant="normal">返</mi><mi mathvariant="normal">传</mi><mi mathvariant="normal">播</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">延</mi><mo>=</mo><mi mathvariant="normal">传</mi><mi mathvariant="normal">播</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">延</mi><mo>∗</mo><mn>2</mn><mo>+</mo><mi mathvariant="normal">末</mi><mi mathvariant="normal">端</mi><mi mathvariant="normal">处</mi><mi mathvariant="normal">理</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><annotation encoding="application/x-tex">往返传播时延=传播时延*2+末端处理时间</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mord cjk_fallback">往</span><span class="mord cjk_fallback">返</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">播</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">延</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">播</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">延</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">末</span><span class="mord cjk_fallback">端</span><span class="mord cjk_fallback">处</span><span class="mord cjk_fallback">理</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span><br />
 RTT越大，在收到确认之前，可以发送的数据越多。</p>
+<hr />
 <p><strong>利用率</strong>：<br />
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">信</mi><mi mathvariant="normal">道</mi><mi mathvariant="normal">利</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">率</mi><mo>=</mo><mi mathvariant="normal">有</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">据</mi><mi mathvariant="normal">通</mi><mi mathvariant="normal">过</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">总</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><annotation encoding="application/x-tex">信道利用率=有数据通过时间/总时间</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">道</span><span class="mord cjk_fallback">利</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">率</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">据</span><span class="mord cjk_fallback">通</span><span class="mord cjk_fallback">过</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord">/</span><span class="mord cjk_fallback">总</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span><br />
 网络利用率=信道利用率加权平均值</p>
@@ -3864,10 +3864,12 @@ RTT越大，在收到确认之前，可以发送的数据越多。</p>
 模拟信号:代表消息的参数取值是连续的。</p></blockquote>
 <p><strong>信源</strong>:产生和发送数据的源头。信宿:接收数据的终点。<br />
 <strong>信道</strong>:信号的传输媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接收信道。</p>
+<hr />
 <p><strong>通信方式：</strong><br />
 <strong>单工通信</strong>只有一个方向的通信而没有反方向的交互，仅需要一条信道。<br />
 <strong>半双工通信</strong>通信的双方都可以发送或接收信息，但任何一方都不能同时发送和接收，需要两条信道<br />
 <strong>全双工通信</strong>通信双方可以同时发送和接受信息，也需要两条信道。</p>
+<hr />
 <p><strong>数据传输方式：</strong><br />
 <strong>串行传输</strong>：速度慢，费用低，适合远距离<br />
 <strong>并行传输</strong>：速度快，费用高，适合近距离</p>
@@ -3878,7 +3880,7 @@ RTT越大，在收到确认之前，可以发送的数据越多。</p>
 <strong>码元传输速率</strong>别名码元速率、波形速率、调制速率、符号速率等，它表示单位时间内数字通信系统所传输的码元个数(也可称为脉冲个数或信号变化的次数)，单位是<strong>波特(Baud)</strong>。1波特表示数字通信系统每秒传输一个码元。这里的码元可以是多进制的，也可以是二进制的，但码元速率与进制数无关。<br />
 <strong>信息传输速率</strong>别名信息速率、比特率等，表示单位时间内数字通信系统传输的<em>二进制码元个数</em>（即比特数)单位是比特/秒(b/s) 。<br />
 <strong>带宽</strong>表示在单位时间内从网络中的某一点到另一点所能通过的“最高数据率”，常用来表示网络的通信线路所能传输数据的能力。单位是b/s。</p>
-<h3 id="奈氐佳则和香农定理"><a class="markdownIt-Anchor" href="#奈氐佳则和香农定理"></a> 奈氐佳则和香农定理</h3>
+<h3 id="奈氐准则和香农定理"><a class="markdownIt-Anchor" href="#奈氐准则和香农定理"></a> 奈氐准则和香农定理</h3>
 <p><strong>码间串扰</strong>:接收端收到的信号波形失去了码元之间清晰界限的现象。<br />
 <strong>奈氏准则</strong>:在理想低通（无噪声，带宽受限)条件下，为了避免码间串扰，极限码元传输速率为2W Baud，W是信道带宽，单位是Hz。</p>
 <blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
@@ -3938,7 +3940,299 @@ RTT越大，在收到确认之前，可以发送的数据越多。</p>
 <p>调幅、调频、调相、调幅+调相。</p>
 <h4 id="模拟数据编码为数字信号"><a class="markdownIt-Anchor" href="#模拟数据编码为数字信号"></a> 模拟数据编码为数字信号</h4>
 <p>最典型的例子就是对音频信号进行编码的脉码调制(PCM)，在计算机应用中，能够达到最高保真水平的就是PCM编码，被广泛用于素材保存及音乐欣赏，CD、DVD以及我们常见的WAV文件中均有应用。它主要包括三步:抽样、量化、编码。<br />
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mrow><mi mathvariant="normal">采</mi><mi mathvariant="normal">样</mi><mi mathvariant="normal">频</mi><mi mathvariant="normal">率</mi></mrow></msub><mo>&gt;</mo><mn>2</mn><msub><mi>f</mi><mrow><mi mathvariant="normal">最</mi><mi mathvariant="normal">高</mi><mi mathvariant="normal">频</mi><mi mathvariant="normal">率</mi></mrow></msub></mrow><annotation encoding="application/x-tex">f_{采样频率}&gt;2f_{最高频率}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:-0.15em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">采</span><span class="mord cjk_fallback mtight">样</span><span class="mord cjk_fallback mtight">频</span><span class="mord cjk_fallback mtight">率</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:-0.15em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">最</span><span class="mord cjk_fallback mtight">高</span><span class="mord cjk_fallback mtight">频</span><span class="mord cjk_fallback mtight">率</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+f_采样频率&gt;2f_最高频率</p>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络(二)</title>
+    <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%BA%8C.html</url>
+    <content><![CDATA[<h2 id="数据链路层"><a class="markdownIt-Anchor" href="#数据链路层"></a> 数据链路层</h2>
+<p>数据链路层负责通过一条链路从一个结点向另一个物理链路直接相连的相邻结点传送数据报。</p>
+<h3 id="基本概念"><a class="markdownIt-Anchor" href="#基本概念"></a> 基本概念</h3>
+<p><strong>结点</strong>:主机、路由器<br />
+<strong>链路</strong>:网络中两个结点之间的物理通道，链路的传输介质主要有双绞线、光纤和微波。分为有线链路、无线链路。<br />
+<strong>数据链路</strong>:网络中两个结点之间的逻辑通道，把实现控制数据传输协议的硬件和软件加到链路上就构成数据链路<br />
+<strong>帧</strong>︰链路层的协议数据单元，封装网络层数据报。</p>
+<h3 id="功能"><a class="markdownIt-Anchor" href="#功能"></a> 功能</h3>
+<p>数据链路层在物理层提供服务的基础上<em>向网络层提供服务</em>，其最基本的服务是将源自网络层来的数据<em>可靠</em>地传输到相邻节点的目标机网络层。其主要作用是<em>加强物理层传输原始比特流的功能</em>，将物理层提供的可能出错的物理连接改造成为<em>逻辑上无差错</em>的数据链路，使之对网络层表现为一条无差错的链路。</p>
+<h4 id="封装成帧"><a class="markdownIt-Anchor" href="#封装成帧"></a> 封装成帧</h4>
+<p>封装成帧就是在一段数据的前后部分添加首部和尾部，这样就构成了一个帧。接收端在收到物理层上交的比特流后，就能根据首部和尾部的标记，从收到的比特流中识别帧的开始和结束。<br />
+首部和尾部包含许多的控制信息，他们的一个重要作用:<strong>帧定界(确定帧的界限)</strong>。<br />
+<strong>帧同步</strong>:接收方应当能从接收到的二进制比特流中区分出帧的起始和终止。</p>
+<hr />
+<p><strong>组帧的四种方法:</strong><br />
+<strong>字符计数法</strong>:帧首部使用一个计数字段(第一个字节，八位)来标明帧内字符数。（若第一个字节出错，将导致灾难性的后果）<br />
+<strong>字符填充法</strong>:帧中的数据部分的某个字节可能与帧的控制信息相同。这时候在该字节前添加转义字符实现透明传输。（实现复杂且兼容差）<br />
+<strong>零比特填充法</strong>:帧首部和尾部都是01111110。<br />
+<em>在发送端</em>，扫描整个信息字段，只要连续5个1，就立即填入1个0。<br />
+<em>在接收端</em>收到一个帧时，先找到标志字段确定边界，再用硬件对比特流进行扫描。发现连续5个1时，就把后面的0删除。<br />
+<strong>违规编码法</strong>体现在物理层中。例如在曼彻斯特编码中，连续的高电平或连续第低电平是违规的。把这两种违规编码作为帧的起始和终止。</p>
+<h4 id="差错控制"><a class="markdownIt-Anchor" href="#差错控制"></a> 差错控制</h4>
+<p>传输中的<strong>差错</strong>都是由于噪声引起的。<br />
+<strong>位错</strong>：0→1或1→0</p>
+<hr />
+<p><strong>检错编码</strong>：<br />
+<em>奇偶校验法</em>（帧中的1的个数是奇数还是偶数）<br />
+<em>CRC循环冗余码</em>：<br />
+对发送端：<br />
+要传的数据%生成多项式=FCS帧检验序列(冗余码)<br />
+最终发送的数据=要传的数据+FCS帧检验序列(冗余码)<br />
+对接收端：<br />
+如果接受到的数据能被生成多项式整除，则有无限接近于1的概率判定传输无错。</p>
+<hr />
+<p><strong>纠错编码</strong>：<br />
+<a href='https://baike.baidu.com/item/%E6%B1%89%E6%98%8E%E7%A0%81/3226749?fromtitle=%E6%B5%B7%E6%98%8E%E7%A0%81&fromid=1453231&fr=aladdin'>海明码</a></p>
+<h4 id="流量控制"><a class="markdownIt-Anchor" href="#流量控制"></a> 流量控制</h4>
+<p>较高的发送速度和较低的接收能力的不匹配，会造成传输出错，因此流量控制也是数据链路层的一项重要工作。<br />
+<strong>数据链路层流量控制手段</strong>:接收方收不下就不回复确认。</p>
+<p><strong>流量控制方法：</strong><br />
+<strong>停止-等待协议</strong>：<br />
+条件：每个帧及其对应的ASK都需要进行编号<br />
+<em>发送方</em>：</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>每发送完一个帧就停止发送，并启动一个超时计时器，并且等待对方的确认。若在规定时间内收到确认则发送下一个帧。若超出规定时间，则重新发送，若收到不属于当前传输的帧的确认，则直接忽略该确认。</p></blockquote>
+<p><em>接受方</em>：</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>每接受到一个帧就返回一个确认，若收到一个和之前收到过的某个帧相同的帧，则丢弃该帧，并重新发送之前那个帧的确认。</p></blockquote>
+<p>以下两个协议的帧的编号是可以重复利用的。</p>
+<hr />
+<p><strong>后退N帧协议(GBN)</strong>：<br />
+<em>发送窗口(多个)</em>:发送方维持一组连续的允许发送的帧的序号。发送窗口的长度应该大于等于1且小于等于帧的最大编号(从0开始编号)<br />
+<em>接收窗口（单个）</em>:接收方维持的一个允许接收帧的序号。<br />
+<em>发送方</em>：</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p><em>上层的调用</em>：<br />
+上层要发送数据时，发送方先检查发送窗口是否已满，如果未满，则产生一个帧并将其发送;如果窗口已满,发送方只需将数据返回给上层，暗示上层窗口已满。上层等一会再发送。(实际实现中，发送方可以缓存这些数据，窗口不满时再发送帧）。<br />
+<em>收到了一个ACK</em>：<br />
+GBN协议中，对n号帧的确认采用累积确认的方式，标明接收方已经收到n号帧和它之前的全部帧。<br />
+<em>超时事件</em>：<br />
+协议的名字为后退N帧/回退N帧，来源于出现丢失和时延过长帧时发送方的行为。就像在停等协议中一样，定时器将再次用于恢复数据帧或确认帧的丢失。如果出现超时，发送方重传所有已发送但未被确认的帧。</p></blockquote>
+<p><em>接收方</em>：</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>如果正确收到n号帧，并且按序，那么接收方为n帧发送一个ACK，并将该帧中的数据部分交付给上层。<br />
+其余情况都丢弃帧，并为最近按序接收的帧重新发送ACK。接收方无需缓存任何失序帧，只需要维护一个信息:expectedseqnum(下一个按序接收的帧序号)。</p></blockquote>
+<hr />
+<p><strong>选择重传协议(SR)</strong>：<br />
+GBN协议中，如果某个帧出错可能会导致批量重传。<br />
+而在SR协议中，只重传出错的帧。<br />
+发送窗口长度等于接收窗口长度等于(帧的最大编号(从0开始)+1)/2。<br />
+<em>发送方</em>：</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p><em>上层的调用</em>（同GBN）<br />
+<em>收到了一个ACK</em>：如果收到ACK，如果该帧序号在窗口内，则将那个被确认的帧标记为已接收。如果该帧序号是窗口的下界（还留在窗口中的且是最早进入窗口的序号），则窗口下界移动到下一个未确认帧处。如果窗口移动了并且有序号在窗口内的未发送帧，则发送这些帧。<br />
+<em>超时事件</em>：每个帧都有自己的定时器，一个超时事件发生后只重传一个帧。</p></blockquote>
+<p><em>接受方</em></p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>返回每一个收到的帧的ASK。失序的帧将被缓存，并返回给发送方一个该帧的ASK，直到窗口下界的帧收到为止，这时才可以将一批帧按序交付给上层，然后移动滑动窗口。</p></blockquote>
+<h3 id="信道划分介质访问控制"><a class="markdownIt-Anchor" href="#信道划分介质访问控制"></a> 信道划分介质访问控制</h3>
+<p>信道划分介质访问控制:将使用介质的每个设备与来自同一信道上的其他设备的通信<em>隔离</em>开，把<em>时域和频域资源</em>合理地分配给网络上的设备。</p>
+<p><strong>多路复用技术</strong>：<br />
+把多个信号组合在一条物理信道上进行传输，使得多个计算机或终端设备共享信道资源,提高信道利用率。即把一条广播信道，逻辑上分成几条用于两个节点之间通信的互不干扰的子信道，实际就是把广播信道转变为点对点信道。</p>
+<p><em>频分多路复用(FDM)</em>：<br />
+用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带。频分复用的所有用户在同样的时间占用不同的带宽(颜率带宽)资源。<br />
+<em>时分多路复用(TDM)</em>：<br />
+将时间划分为一段段等长的时分复用帧（TDM帧)。每一个时分复用的用户在每一个TDM帧中占用固定序号的时隙,所有用户轮流占用信道。<br />
+<em>统计时分复用(STDM)</em>：<br />
+各用户有了数据就随时发往集中器的输入缓存，然后集中器按顺序依次扫描输入缓存，把缓存中的输入数据放入STDM帧中，一个STDM帧满了就发出。STDM帧不是固定分配时隙,而是按动态分配时隙。<br />
+<em>波分多路复用(WDM)</em>：<br />
+波分多路复用就是光的频分多路复用，在一根光纤中传输的多种不同波长（频率）的光信号互不干扰，最后再用波长分解复用器将各路波长分解出来。<br />
+<em>码分多路复用</em>：<br />
+码分多址(CDMA）是码分复用的一种方式。<br />
+1个比特分为多个码片/芯片(chip)，每一个站点被指定一个唯一的m位的芯片序列。<br />
+发送1时站点发送芯片序列，发送0时发送芯片序列反码。<br />
+要求：</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>发送:多个站点同时发送数据的时候，要求各个站点芯片序列相互正交<br />
+合并:各路数据在信道中被线性相加<br />
+分离:合并的数据和源站规格化内积</p></blockquote>
+<hr />
+<p><em>轮询访问介质访问控制：</em>*<br />
+令牌传递协议、轮询协议</p>
+<hr />
+<p><em>纯ALOHA协议</em>:<br />
+不监听信道，不按时间槽发送，随机重发。如果发生冲突，接收方在就会检测出差错，然后不予确认，发送方在一定时间内收不到就判断发生冲突。<br />
+<em>时隙ALOHA协议</em>:<br />
+把时间分成若干个相同的时间片，所有用户在时间片开始时刻同步接入网络信道,若发生冲突，则必须等到下一个时间片开始时刻再发送。</p>
+<hr />
+<p><em>载波监听多路访问协议(CSMA)</em>:<br />
+每一个站在发送数据之前要检测一下总线上是否有其他计算机在发送数据。多点接入，表示许多计算机以多点接入的方式连接在一根总线上。<br />
+若信道空闲，则发送完整帧；如果信道忙，则推迟发送。<br />
+<em>缺点</em>：发生冲突后还是要坚持把数据帧发送完，造成了浪费。</p>
+<p><em>1-坚持CSMA:</em></p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>如果一个主机要发送消息，那么它先监听信道。<br />
+空闲则直接传输，不必等待。忙则一直监听，直到空闲马上传输。<br />
+如果有冲突（一段时间内未收到肯定回复)，则等待一个随机长的时间再监听，重复上述过程。<br />
+<strong>优点</strong>:只要媒体空闲，站点就马上发送，避免了媒体利用率的损失。<br />
+<strong>缺点</strong>:假如有两个或两个以上的站点有数据要发送，冲突就不可避免。</p></blockquote>
+<p><em>非坚持CSMA:</em></p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>如果一个主机要发送消息，那么它先监听信道。<br />
+空闲则直接传输，不必等待。忙则等待一个随机的时间之后再进行监听。<br />
+<strong>优点</strong>:采用随机的重发延迟时间可以减少冲突发生的可能性。<br />
+<strong>缺点</strong>:可能存在大家都在延迟等待过程中，使得媒体仍可能处于空闲状态，媒体使用率降低。</p></blockquote>
+<p><em>p-坚持CSMA:</em></p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>如果一个主机要发送消息，那么它先监听信道。<br />
+空闲则以p概率直接传输，不必等待;概率1-p等待到下一个时间槽再传输。忙则等待一个随机的时间之后再进行监听。<br />
+<strong>优点</strong>:既能像非坚持算法那样减少冲突，又能像1-坚持算法那样减少媒体空闲时间的这种方案。</p></blockquote>
+<hr />
+<p><em>CSMA/CD协议</em>：(常用于总线以太网、树形网络)<br />
+<a href='https://baike.baidu.com/item/CSMA/CD/986847'>CSMA/CD</a><br />
+<em>CSMA/CA协议</em>：(常用于无线局域网)<br />
+<a href='https://baike.baidu.com/item/CSMA%2FCA/10898090?fr=aladdin'>CSMA/CA</a></p>
+<h3 id="以太网"><a class="markdownIt-Anchor" href="#以太网"></a> 以太网</h3>
+<p>以太网提供<em>无连接</em>、<em>不可靠</em>的服务<br />
+<em>无连接</em>:发送方和接收方之间无“握手过程”。<br />
+<em>不可靠</em>:不对发送方的数据帧编号，接收方不向发送方进行确认，差错帧直接丢弃，差错纠正由高层负责。</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>以太网只实现无差错接收，不实现可靠传输。</p></blockquote>
+<p><strong>10BASE-T以太网</strong>:<br />
+10BASE-T是传送基带信号的双绞线以太网，T表示采用双绞线，现10BASE-T采用的是无屏蔽双绞线(UTP），传输速率是10Mb/s。</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>物理上采用星型拓扑，逻辑上总线型，每段双绞线最长为100m。<br />
+采用曼彻斯特编码。<br />
+采用CSMA/CD介质访问控制。</p></blockquote>
+<p><strong>100BASE-T以太网</strong>:<br />
+在双绞线上传送100Mb/s基带信号的星型拓扑以太网，仍使用IEEE802.3的CSMA/CD协议。<br />
+支持全双工和半双工，可在全双工方式下工作而无冲突。<br />
+<strong>吉比特以太网</strong>:<br />
+在光纤或双绞线上传送1Gb/s信号。<br />
+支持全双工和半双工，可在全双工方式下工作而无冲突。<br />
+<strong>10吉比特</strong>:<br />
+10吉比特以太网在光纤上传送10Gb/s信号。<br />
+只支持全双工，无争用问题。</p>
+<h3 id="链路层设备"><a class="markdownIt-Anchor" href="#链路层设备"></a> 链路层设备</h3>
+<p><strong>网段（冲突域）</strong>:一般指一个计算机网络中使用同一物理层设备(传输介质，中继器，集线器等)能够直接通讯的那一部分。</p>
+<hr />
+<p><strong>网桥</strong>：网桥根据MAC帧的目的地址对帧进行转发和过滤。当网桥收到一个帧时，并不向所有接口转发此帧，而是先检查此帧的目的MAC地址，然后再确定将该帧转发到哪一个接口，或者是把它丢弃（即过滤）。<br />
+<em>优点:</em></p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>1.过滤通信量，增大吞吐量。<br />
+2.扩大了物理范围。<br />
+3.提高了可靠性。<br />
+4.可互连不同物理层、不同MAC子层和不同速率的以太网。</p></blockquote>
+<p><strong>网桥分类</strong><br />
+<em>透明网桥</em>:以太网上的站点并不知道所发送的帧将经过哪几个网桥，是一种即插即用设备<br />
+<em>源路由网桥</em>:在发送帧时，把详细的最佳路由信息（路由最少/时间最短）放在帧的首部中。</p>
+<hr />
+<p><strong>多接口网桥――以太网交换机</strong><br />
+<em>直通式交换机</em>：<br />
+查完目的地址（6B）就立刻转发。<br />
+延迟小，可靠性低，无法支持具有不同速率的端口的交换。</p>
+<p><em>存储转发式交换机</em>:<br />
+将帧放入高速缓存，并检查否正确，正确则转发，错误则丢弃。<br />
+延迟大，可靠性高，可以支持具有不同速率的端口的交换。</p>
 ]]></content>
       <categories>
         <category>网络</category>
