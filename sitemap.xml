@@ -277,21 +277,14 @@
   </url>
   
   <url>
-    <loc>https://ac-accelerator.github.io/tags/Linux/</loc>
-    <lastmod>2022-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://ac-accelerator.github.io/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2022-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://ac-accelerator.github.io/tags/Pytorch/</loc>
+    <lastmod>2022-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2022-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -319,14 +312,14 @@
   </url>
   
   <url>
-    <loc>https://ac-accelerator.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://ac-accelerator.github.io/tags/Linux/</loc>
     <lastmod>2022-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ac-accelerator.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/</loc>
+    <loc>https://ac-accelerator.github.io/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2022-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -334,6 +327,13 @@
   
   <url>
     <loc>https://ac-accelerator.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <lastmod>2022-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/</loc>
     <lastmod>2022-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -363,13 +363,6 @@
   </url>
   
   <url>
-    <loc>https://ac-accelerator.github.io/categories/Linux/</loc>
-    <lastmod>2022-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://ac-accelerator.github.io/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</loc>
     <lastmod>2022-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -378,6 +371,13 @@
   
   <url>
     <loc>https://ac-accelerator.github.io/categories/%E7%AB%9E%E8%B5%9B/</loc>
+    <lastmod>2022-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ac-accelerator.github.io/categories/Linux/</loc>
     <lastmod>2022-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
