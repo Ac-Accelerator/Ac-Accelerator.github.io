@@ -511,7 +511,7 @@ pre[class*=language-] {
 
 .token.builtin,
 .token.class-name {
-    color: var(--cyan)
+    color: #4ec9b0
 }
 
 .token.comment {
