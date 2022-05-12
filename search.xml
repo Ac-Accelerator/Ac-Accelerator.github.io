@@ -1285,7 +1285,8 @@ border的参数有1，0。</p>
 <li>public class的名字必须和文件名字一样，大小写都要完全一致</li>
 <li>一个文件可以有多个class，但是只能有一个是public。不提倡一个文件里面放多个类（内部类除外)</li>
 <li>System.out.print()输出<br />
-Systen.out.println()换行输出</li>
+Systen.out.println()换行输出<br />
+System.out.printf()格式化的输出，输出方式与C语言基本相同</li>
 <li>类是Java中的最基础逻辑单位
 <ul>
 <li>Java所有的内容都是需要放在类的范围中</li>
@@ -4472,6 +4473,604 @@ GBN协议中，如果某个帧出错可能会导致批量重传。<br />
       </categories>
       <tags>
         <tag>微积分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java学习笔记(二)</title>
+    <url>//post/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C.html</url>
+    <content><![CDATA[<h3 id="java常用类"><a class="markdownIt-Anchor" href="#java常用类"></a> Java常用类</h3>
+<p><strong>Java类库</strong><br />
+<em>包名以Java开始的包是Java核心包(Java Core Package)</em>：</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>java.applet.*</td>
+<td>提供了创建applet需要的所有类。</td>
+</tr>
+<tr>
+<td>java.awt.*</td>
+<td>提供了创建用户界面以及绘制和管理图形、图像的类</td>
+</tr>
+<tr>
+<td>java.beans.*</td>
+<td>提供了开发Java Beans需要的所有类。</td>
+</tr>
+<tr>
+<td><a href="http://java.io">java.io</a>.*</td>
+<td>提供了通过数据流、对象序列以及文件系统实现的系统输入、输出。</td>
+</tr>
+<tr>
+<td>java.lang.*</td>
+<td>Java编程语言的基本类库。</td>
+</tr>
+<tr>
+<td>java.math.*</td>
+<td>提供了简明的整数算术以及十进制算术的基本函数。</td>
+</tr>
+<tr>
+<td><a href="http://java.net">java.net</a>.*</td>
+<td>提供了用于实现网络通讯应用的所有类。</td>
+</tr>
+<tr>
+<td>java.nio.*,</td>
+<td>提供用于实现nio应用的所有类。</td>
+</tr>
+<tr>
+<td>java.rmi.*</td>
+<td>提供了与远程方法调用相关的所有类。</td>
+</tr>
+<tr>
+<td>java.security.*</td>
+<td>提供了设计网络安全方案需要的一些类。</td>
+</tr>
+<tr>
+<td>java.sql.*</td>
+<td>捉供了访问和处理来自于Java标准数据源数据的类。</td>
+</tr>
+<tr>
+<td>java.text.*</td>
+<td>包括以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口。</td>
+</tr>
+<tr>
+<td>java.time.*</td>
+<td>捉供Java日期、时间类(Java 8新增的包)。</td>
+</tr>
+<tr>
+<td>java.util.*</td>
+<td>包括集合类、时间处理模式、日期时间工具等各类常用工具包。</td>
+</tr>
+</tbody>
+</table>
+<p><em>包名以Javax开始的包是Java扩展包(Java Extension Package)</em></p>
+<h4 id="数字相关类"><a class="markdownIt-Anchor" href="#数字相关类"></a> 数字相关类</h4>
+<p>除了基本类及其包装类，还有大数类。</p>
+<ul>
+<li><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html'>java.math.Biglnteger</a> 支持无限大的整数运算</li>
+<li><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html'>java.math.BigDecimal</a> 支持无限大的小数运算(注意精度)。</li>
+<li><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/random/package-summary.html'>java.util.Random</a>
+<ul>
+<li>nextInt()返回一个随机int</li>
+<li>nextInt(int a)返回一个[0,a)之间的随机int</li>
+<li>ints方法批量返回随机数数组</li>
+<li>nextDouble()返回一个[0.0,1.0]之间double</li>
+<li>java.lang.Math.random()返回一个[0.0,1.0]之间double</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Math.html'>java.lang.Math</a>
+<ul>
+<li>绝对值函数abs</li>
+<li>对数函数log</li>
+<li>比较函数max、 min</li>
+<li>幂函数pow</li>
+<li>四舍五入函数round等</li>
+<li>向下取整floor</li>
+<li>向上取整ceil</li>
+</ul>
+</li>
+</ul>
+<h4 id="字符串相关类"><a class="markdownIt-Anchor" href="#字符串相关类"></a> 字符串相关类：</h4>
+<ul>
+<li><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html'>java.lang.String</a></li>
+<li><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/StringBuffer.html'>java.lang.StringBuffer</a></li>
+<li><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/StringBuilder.html'>java.lang.StringBuilder</a></li>
+</ul>
+<h4 id="时间相关类"><a class="markdownIt-Anchor" href="#时间相关类"></a> 时间相关类：</h4>
+<p><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Calendar.html'>java.util.Calendar</a></p>
+<ul>
+<li>get(Field)来获取时间中每个属性的值.注意，月份0-11.</li>
+<li>getTime()，返回相应的Date对象</li>
+<li>getTimeInMillis(),返回自1970.1.1以来的毫秒数</li>
+<li>set(Field)设置时间字段</li>
+<li>add(field, amount)根据指定字段增加/减少时间</li>
+<li>roll(field, amount)根据指定字段增加/减少时间，但不影响上一级的时间段</li>
+</ul>
+<p>JAVA8提供的新的包：<br />
+<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/package-summary.html>java.time</a></p>
+<ul>
+<li>LocalDate: 日期类</li>
+<li>LocalTime: 时间类(时分秒-纳秒)</li>
+<li>LocalDateTime: LocalDate +LocalTime</li>
+<li>Instant:时间戳</li>
+</ul>
+<h4 id="格式化相关类"><a class="markdownIt-Anchor" href="#格式化相关类"></a> 格式化相关类：</h4>
+<p><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/package-summary.html>java.text.</a></p>
+<ul>
+<li>NumberFormat:数字格式化，抽象类
+<ul>
+<li>DecimalFormat</li>
+</ul>
+</li>
+<li>MessageFormat:字符串格式化</li>
+<li>DateFormat:日期/时间格式化，抽象类
+<ul>
+<li>SimpleDateFormat</li>
+</ul>
+</li>
+</ul>
+<p><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/package-summary.html>java.time.format</a></p>
+<ul>
+<li>DateTimcFormatter</li>
+</ul>
+<h3 id="异常及其处理"><a class="markdownIt-Anchor" href="#异常及其处理"></a> 异常及其处理</h3>
+<h4 id="异常分类"><a class="markdownIt-Anchor" href="#异常分类"></a> 异常分类</h4>
+<ul>
+<li>Throwable:所有错误的祖先</li>
+<li>Error:系统内部错误或者资源耗尽。</li>
+<li>Exception:程序有关的异常。
+<ul>
+<li>RuntimcExccption:程序自身的错误</li>
+<li>非RuntimcException:外界相关的错误</li>
+</ul>
+</li>
+</ul>
+<h4 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h4>
+<p><em>try</em>:正常业务逻辑代码。<br />
+<em>catch</em>:当try发生异常，将执行catch代码。若无异常，绕之。catch块可以有多个，每个有不同的入口形参。当已发生的异常和某一个catch块中的形参类型一致，那么将执行该catch块中的代码。一个异常只能进入一个catch块(通常小异常放在前面，大异常放在后面)。<br />
+<em>finally</em>:当try或catch执行结束后，必须要执行finally。<br />
+<strong>上述结构是可以嵌套的</strong><br />
+对于<em>throw</em>的写法<em>类似</em>于C++的异常规范，但两者有很大的不同：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">divide</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ArithmeticException</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> result <span class="token operator">=</span> x<span class="token operator">/</span>y <span class="token punctuation">;</span>
+    <span class="token keyword">return</span> x<span class="token operator">/</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>一个方法被覆盖，覆盖它的方法必须抛出相同的异常，或者异常的子类。<br />
+如果父类的方法抛出多个异常，那么重写的子类方法必须抛出那些异常的子集，也就是不能抛出新的异常。</p>
+<h4 id="自定义异常"><a class="markdownIt-Anchor" href="#自定义异常"></a> 自定义异常</h4>
+<p>自定义异常，需要继承Exception类或其子类。</p>
+<ul>
+<li>继承自Exception，就变成Checked Exception</li>
+<li>继承自RuntimeException,就变成Unchecked Exception</li>
+</ul>
+<p>自定义重点在构造函数</p>
+<ul>
+<li>调用父类Exception的message构造函数</li>
+<li>可以自定义自己的成员变量<br />
+在程序中采用throw主动抛出异常</li>
+</ul>
+<h3 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h3>
+<p><strong>数组</strong>：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//a 还没有new操作实际上是nu1l，也不知道内存位置</span>
+<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b<span class="token punctuation">;</span> <span class="token comment">//b 还没有new操作实际上是null，也不知道内存位置</span>
+<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//c有2个元素，都是0</span>
+c<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> c<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span><span class="token comment">//逐个初始化</span>
+<span class="token keyword">int</span> d<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">//d有3个元素,0,2,4，同时定义和初始化</span>
+<span class="token keyword">int</span> d1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">//d1有3个元素,1,3,5同时定义和初始化</span>
+<span class="token comment">//规则数组</span>
+<span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">//不规则数组</span>
+<span class="token keyword">int</span> b<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+b <span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+b<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">//注意声明变量时候没有分配内存，不需要指定大小，以下是错误示例</span>
+<span class="token comment">//int e[5];</span>
+<span class="token comment">//int[5] f;</span>
+<span class="token comment">//int[5] g = new int[5];</span>
+<span class="token comment">//int h[5] = new int[5];</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>索引和遍历与C++相同。</p>
+<p><strong>JCF</strong>:<br />
+相当于C++的<em>STL</em>。<br />
+<em>JCF主要的数据结构实现类</em></p>
+<ul>
+<li>列表:
+<ul>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/util/List.html>java.util.List&lt;E&gt;</a>(接口)</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html>java.util.ArrayList&lt;E&gt;</a>(<em>STL::vector</em>) ,</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html>java.util.LinkedList&lt;E&gt;</a>(<em>STL::list</em>)</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Vector.html>java.util.Vector&lt;E&gt;</a>(ArrayList的多线程优化版)</li>
+</ul>
+</li>
+<li>集合:
+<ul>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html>java.util.Set&lt;E&gt;</a>(接口)</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html>java.util.HashSet&lt;E&gt;</a>(<em>散列</em>)</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeSet.html>java.util.TreeSet&lt;E&gt;</a>(<em>STL::set</em>)</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedHashSet.html>java.util.LinkedHashSet&lt;E&gt;</a>(<em>散列+双向链表</em>)</li>
+</ul>
+</li>
+<li>映射：
+<ul>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>java.util.Map&lt;K,V&gt;</a>(接口)</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Hashtable.html>java.util.Hashtable&lt;K,V&gt;</a></li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html>java.util.HashMap&lt;K,V&gt;</a>(<em>散列</em>)</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html>java.util.TreeMap&lt;K,V&gt;</a>(<em>STL::map</em>)</li>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedHashMap.html>java.util.LinkedHashMap&lt;K,V&gt;</a>(<em>散列+双向链表</em>)</li>
+</ul>
+</li>
+</ul>
+<p><em>JCF主要的算法类</em></p>
+<ul>
+<li><a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Arrays.html>Arrays</a>:对数组进行查找和排序等操作</li>
+<li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collections.html">Collections</a>:对Collection及其子类进行排序和查找操作</li>
+<li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html">Comparable&lt;T&gt;</a>(接口)：通过实现其中<code>int compareTo(T obj)</code>方法来实现自定义的排序；</li>
+<li>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>&gt;返回1，==返回0，&lt;返回-1</p></blockquote>
+</li>
+<li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html">Comparator&lt;T&gt;</a>(接口)：新建一个类来实现Comparator中的<code>int compare(T obj1, T obj2)</code>然后将该类的一个对象作为参数传入工具类的sort方法，这个对象叫做<em>比较器</em>。</li>
+<li>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>&gt;返回1，==返回0，&lt;返回-1</p></blockquote>
+</li>
+</ul>
+<h3 id="文件操作"><a class="markdownIt-Anchor" href="#文件操作"></a> 文件操作</h3>
+<p><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html">java.io.File</a></p>
+<ul>
+<li>isDirectory是否是目录</li>
+<li>isFile是否是文件</li>
+<li>getName获取文件名字</li>
+<li>getParent获取上一层目录路径</li>
+<li>getPath 获取这个文件的全路径</li>
+<li>length获取文件的大小</li>
+<li>lastModified返回文件最后一次修改时间</li>
+</ul>
+<p><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/package-summary.html">java.io</a>(包括大部分文件操作)<br />
+<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/package-summary.html">java.nio</a>(Java7提供新IO包，是对原有的IO包的补充扩展)</p>
+<h4 id="文本文件读写"><a class="markdownIt-Anchor" href="#文本文件读写"></a> 文本文件读写：</h4>
+<p><strong>读：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">BufferedReader</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileInputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStreamReader</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TxtFileRead</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">readFile1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token comment">//法1</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">readFile1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">FileInputStream</span> fis <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">InputStreamReader</span> isr <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">BufferedReader</span> br <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            fis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"c:/temp/abc.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 节点类</span>
+            isr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>fis<span class="token punctuation">,</span> <span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 转化类</span>
+            br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span>isr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 装饰类</span>
+            <span class="token comment">// 上面3行可以直接缩写为下面一行</span>
+            <span class="token comment">// br = new BufferedReader(newInputStreamReader(newFileInputStream("c:/temp/abc.txt"),"UTF-8"))</span>
+            <span class="token class-name">String</span> line<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>line <span class="token operator">=</span> br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token comment">// 每次读取一行</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+                br<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭最后一个类，会将所有的底层流都关闭</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token comment">//法2</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">readFile2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> line<span class="token punctuation">;</span>
+        <span class="token comment">// try-resource 语句，自动关闭资源</span>
+        <span class="token keyword">try</span> <span class="token punctuation">(</span><span class="token class-name">BufferedReader</span> in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"c:/temp/abc.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>line <span class="token operator">=</span> in<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>写：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TxtFileWrite</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">writeFile1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token comment">//法1</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">writeFile1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">FileOutputStream</span> fos <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">OutputStreamWriter</span> osw <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">BufferedWriter</span> bw <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            fos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"c:/temp/abc.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 节点类</span>
+            osw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OutputStreamWriter</span><span class="token punctuation">(</span>fos<span class="token punctuation">,</span> <span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 转化类</span>
+            bw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedWriter</span><span class="token punctuation">(</span>osw<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 装饰类</span>
+            <span class="token comment">// 上面三行可替换为下面一行</span>
+            <span class="token comment">// br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("c:/temp/abc.txt"),"UTF-8"))</span>
+            bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"我们是"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"Ecnuers.^^"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+                bw<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭最后一个类，会将所有的底层流都关闭</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token comment">//法2</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">writeFile2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// try-resource 语句，自动关闭资源</span>
+        <span class="token keyword">try</span> <span class="token punctuation">(</span><span class="token class-name">BufferedWriter</span> bw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OutputStreamWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"c:/temp/abc.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"我们是"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"Ecnuers.^^"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="二进制文件读写"><a class="markdownIt-Anchor" href="#二进制文件读写"></a> 二进制文件读写</h4>
+<p><strong>读：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BinFileRead</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">readFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">readFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// try-resource 语句，自动关闭资源</span>
+        <span class="token keyword">try</span> <span class="token punctuation">(</span><span class="token class-name">DataInputStream</span> dis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataInputStream</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"c:/temp/def.dat"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">String</span> a<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> c<span class="token punctuation">,</span> d<span class="token punctuation">;</span>
+            a <span class="token operator">=</span> dis<span class="token punctuation">.</span><span class="token function">readUTF</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            c <span class="token operator">=</span> dis<span class="token punctuation">.</span><span class="token function">readInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            d <span class="token operator">=</span> dis<span class="token punctuation">.</span><span class="token function">readInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            b <span class="token operator">=</span> dis<span class="token punctuation">.</span><span class="token function">readUTF</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"a: "</span> <span class="token operator">+</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"c: "</span> <span class="token operator">+</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"d: "</span> <span class="token operator">+</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"b: "</span> <span class="token operator">+</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>写：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BinFileWrite</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"done."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">FileOutputStream</span> fos <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">DataOutputStream</span> dos <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">BufferedOutputStream</span> bos <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            fos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"c:/temp/def.dat"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 节点类</span>
+            bos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedOutputStream</span><span class="token punctuation">(</span>fos<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 装饰类</span>
+            dos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataOutputStream</span><span class="token punctuation">(</span>bos<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 装饰类		</span>
+
+            dos<span class="token punctuation">.</span><span class="token function">writeUTF</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            dos<span class="token punctuation">.</span><span class="token function">writeInt</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            dos<span class="token punctuation">.</span><span class="token function">writeInt</span><span class="token punctuation">(</span><span class="token number">180</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            dos<span class="token punctuation">.</span><span class="token function">writeUTF</span><span class="token punctuation">(</span><span class="token string">"b"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+                dos<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭最后一个类，会将所有的底层流都关闭</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                ex<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="压缩文件读写"><a class="markdownIt-Anchor" href="#压缩文件读写"></a> 压缩文件读写</h4>
+<p><strong>单个文件压缩：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">File</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileInputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipEntry</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipOutputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileOutputStream</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SingleFileZip</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">File</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"c:/temp/abc.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义要压缩的文件</span>
+        <span class="token class-name">File</span> zipFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"c:/temp/single2.zip"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义压缩文件名称</span>
+
+        <span class="token class-name">InputStream</span> input <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义文件的输入流</span>
+        <span class="token class-name">ZipOutputStream</span> zipOut <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 声明压缩流对象</span>
+        zipOut <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ZipOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>zipFile<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        zipOut<span class="token punctuation">.</span><span class="token function">putNextEntry</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ZipEntry</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置ZipEntry对象</span>
+        zipOut<span class="token punctuation">.</span><span class="token function">setComment</span><span class="token punctuation">(</span><span class="token string">"single file zip"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置注释</span>
+
+        <span class="token comment">// 压缩过程</span>
+        <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>temp <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 读取内容</span>
+            zipOut<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 压缩输出</span>
+        <span class="token punctuation">&#125;</span>
+        input<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭输入流</span>
+        zipOut<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭输出流</span>
+
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"single file zip done."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>多个文件压缩</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">File</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileInputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipEntry</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipOutputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileOutputStream</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MultipleFileZip</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 所有异常抛出</span>
+        <span class="token class-name">File</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"c:/temp/multiple"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义要压缩的文件夹</span>
+        <span class="token class-name">File</span> zipFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"c:/temp/multiple2.zip"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义压缩文件名称</span>
+
+        <span class="token class-name">InputStream</span> input <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 定义文件输入流</span>
+        <span class="token class-name">ZipOutputStream</span> zipOut <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 声明压缩流对象</span>
+        zipOut <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ZipOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>zipFile<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        zipOut<span class="token punctuation">.</span><span class="token function">setComment</span><span class="token punctuation">(</span><span class="token string">"multiple file zip"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置注释</span>
+
+        <span class="token comment">// 开始压缩</span>
+        <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 判断是否是文件夹</span>
+            <span class="token class-name">File</span> lists<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">listFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 列出全部子文件</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> lists<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                input <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义文件的输入流</span>
+                zipOut<span class="token punctuation">.</span><span class="token function">putNextEntry</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ZipEntry</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                        <span class="token operator">+</span> <span class="token class-name">File</span><span class="token punctuation">.</span>separator <span class="token operator">+</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置ZipEntry对象</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"正在压缩"</span> <span class="token operator">+</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>temp <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 读取内容</span>
+                    zipOut<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 压缩输出</span>
+                <span class="token punctuation">&#125;</span>
+                input<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭输入流</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        zipOut<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭输出流</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"multiple file zip done."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>单个文件解压缩</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">File</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileInputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileOutputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">OutputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipEntry</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipInputStream</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SingleFileUnzip</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 待解压文件, 需要从zip文件打开输入流，读取数据到java中</span>
+        <span class="token class-name">File</span> zipFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"c:/temp/single.zip"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义压缩文件名称</span>
+        <span class="token class-name">ZipInputStream</span> input <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 定义压缩输入流</span>
+        input <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ZipInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>zipFile<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 实例化ZIpInputStream</span>
+        <span class="token class-name">ZipEntry</span> entry <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">getNextEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 得到一个压缩实体</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"压缩实体名称："</span> <span class="token operator">+</span> entry<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取压缩包中文件名字</span>
+
+        <span class="token comment">// 新建目标文件，需要从目标文件打开输出流，数据从java流入</span>
+        <span class="token class-name">File</span> outFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"c:/temp/"</span> <span class="token operator">+</span> entry<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">OutputStream</span> out <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>outFile<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 实例化文件输出流</span>
+        <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>temp <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        input<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭输入流</span>
+        out<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭输出流</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"unzip done."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>多个文件解压缩</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">File</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">OutputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipEntry</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipFile</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>zip<span class="token punctuation">.</span></span><span class="token class-name">ZipInputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileInputStream</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileOutputStream</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MultipleFileUnzip</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 待解压的zip文件，需要在zip文件上构建输入流，读取数据到Java中</span>
+        <span class="token class-name">File</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"c:/temp/multiple.zip"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义压缩文件名称</span>
+        <span class="token class-name">File</span> outFile <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 输出文件的时候要有文件夹的操作</span>
+        <span class="token class-name">ZipFile</span> zipFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ZipFile</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 实例化ZipFile对象</span>
+        <span class="token class-name">ZipInputStream</span> zipInput <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 定义压缩输入流</span>
+
+        <span class="token comment">// 定义解压的文件名</span>
+        <span class="token class-name">OutputStream</span> out <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 定义输出流，用于输出每一个实体内容</span>
+        <span class="token class-name">InputStream</span> input <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 定义输入流，读取每一个ZipEntry</span>
+        <span class="token class-name">ZipEntry</span> entry <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 每一个压缩实体</span>
+        zipInput <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ZipInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 实例化ZIpInputStream</span>
+
+        <span class="token comment">// 遍历压缩包中的文件</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>entry <span class="token operator">=</span> zipInput<span class="token punctuation">.</span><span class="token function">getNextEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 得到一个压缩实体</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"解压缩"</span> <span class="token operator">+</span> entry<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"文件"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            outFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"c:/temp/"</span> <span class="token operator">+</span> entry<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义输出的文件路径</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>outFile<span class="token punctuation">.</span><span class="token function">getParentFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果输出文件夹不存在</span>
+                outFile<span class="token punctuation">.</span><span class="token function">getParentFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mkdirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 创建文件夹 ,如果这里的有多级文件夹不存在,请使用mkdirs()</span>
+                <span class="token comment">// 如果只是单纯的一级文件夹,使用mkdir()就好了</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>outFile<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 判断输出文件是否存在</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    outFile<span class="token punctuation">.</span><span class="token function">mkdirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"create directory..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                    outFile<span class="token punctuation">.</span><span class="token function">createNewFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建文件</span>
+                    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"create file..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>entry<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                input <span class="token operator">=</span> zipFile<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 得到每一个实体的输入流</span>
+                out <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>outFile<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 实例化文件输出流</span>
+                <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>temp <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                input<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭输入流</span>
+                out<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭输出流</span>
+            <span class="token punctuation">&#125;</span>
+
+        <span class="token punctuation">&#125;</span>
+        input<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
 </search>
