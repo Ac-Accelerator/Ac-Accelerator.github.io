@@ -5510,7 +5510,55 @@ f_采样频率&gt;2f_最高频率</p>
 <p><em>连接服务</em>:首先为分组的传输确定传输路径（建立连接），然后沿该路径(连接）传输系列分组，系列分组传输路径相同，传输结束后拆除连接。</p>
 <p><em>虚电路</em>:一条源主机到目的主机类似于电路的路径（逻辑连接)，路径上所有结点都要维持这条虚电路的建立,都维持一张虚电路表，每一项记录了一个打开的虚电路的信息。</p>
 <p>目的地址仅在建立连接阶段使用,之后每个分组使用长度较短的虚电路号</p>
-<p><strong>比较</strong><br>|特点|数据报服务|虚电路服务|<br>|:-: |:-: |:-:|<br>|连接的建立|不要|必须要|<br>|目的地址|每个分组都有完整的目的地址|仅在建立连接阶段使用，之后每个分组使用长度较短的虚电路号|<br>|路由选择|每个分组独立地进行路由选择和转发|属于同一条虚电路的分组按照同一路由转发|<br>|分组顺序|不保证分组的有序到达|保证分组的有序到达|<br>|可靠性|不保证可靠通信，可靠性由用户主机来保证|可靠性由网络保证|<br>|对网络故障的适应性|出故障的结点丢失分组，其他分组路径选择发生变化，可正常传输|所有经过故障结点的虚电路均不能正常工作|<br>|差错处理和流量控制|由用户主机进行流量控制，不保证数据报的可靠性|可由分组交换网负责，也可由用户主机负责|</p>
+<p><strong>比较</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">特点</th>
+<th style="text-align:center">数据报服务</th>
+<th style="text-align:center">虚电路服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">连接的建立</td>
+<td style="text-align:center">不要</td>
+<td style="text-align:center">必须要</td>
+</tr>
+<tr>
+<td style="text-align:center">目的地址</td>
+<td style="text-align:center">每个分组都有完整的目的地址</td>
+<td style="text-align:center">仅在建立连接阶段使用，之后每个分组使用长度较短的虚电路号</td>
+</tr>
+<tr>
+<td style="text-align:center">路由选择</td>
+<td style="text-align:center">每个分组独立地进行路由选择和转发</td>
+<td style="text-align:center">属于同一条虚电路的分组按照同一路由转发</td>
+</tr>
+<tr>
+<td style="text-align:center">分组顺序</td>
+<td style="text-align:center">不保证分组的有序到达</td>
+<td style="text-align:center">保证分组的有序到达</td>
+</tr>
+<tr>
+<td style="text-align:center">可靠性</td>
+<td style="text-align:center">不保证可靠通信，可靠性由用户主机来保证</td>
+<td style="text-align:center">可靠性由网络保证</td>
+</tr>
+<tr>
+<td style="text-align:center">对网络故障的适应性</td>
+<td style="text-align:center">出故障的结点丢失分组，其他分组路径选择发生变化，可正常传输</td>
+<td style="text-align:center">所有经过故障结点的虚电路均不能正常工作</td>
+</tr>
+<tr>
+<td style="text-align:center">差错处理和流量控制</td>
+<td style="text-align:center">由用户主机进行流量控制，不保证数据报的可靠性</td>
+<td style="text-align:center">可由分组交换网负责，也可由用户主机负责</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h3 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h3><h4 id="静态路由算法"><a href="#静态路由算法" class="headerlink" title="静态路由算法"></a>静态路由算法</h4><p>管理员手工配置路由信息。<br><strong>优点</strong>：<br>简便、可靠,在负荷稳定、拓扑变化不大的网络中运行效果很好，广泛用于高度安全性的军事网络和较小的商业网络。<br><strong>缺点：</strong><br>路由更新慢，不适用于大型网络</p>
 <h4 id="动态路由算法"><a href="#动态路由算法" class="headerlink" title="动态路由算法"></a>动态路由算法</h4><p>路由器间彼此交换信息，按照路由算法优化出路由表项。<br><strong>优点：</strong><br>路由更新快，适用大型网络，及时响应链路费用或网络拓扑变化。<br><strong>缺点:</strong><br>算法复杂，增加网络负担。</p>
 <p><strong>全局性链路状态路由算法(OSPF)</strong><br>网络层协议,直接IP传输<br>所有路由器掌握完整的网络拓扑和链路费用信息，每隔30分钟刷新一次数据库中的链路状态，适用于大规模网络，收敛速度很快。</p>
@@ -5827,6 +5875,7 @@ f_采样频率&gt;2f_最高频率</p>
       <tags>
         <tag>网络</tag>
         <tag>传输层</tag>
+        <tag>应用层</tag>
       </tags>
   </entry>
   <entry>
